@@ -415,18 +415,102 @@
     border:0;
     object-fit:cover;
   }
-  .qa-num{
+  /* ---------------------------------------------------------------------
+     PORTADA EN HTML  (no hace falta diseñar una imagen por vídeo)
+     Se dibuja con CSS sobre el vídeo y desaparece al hacer click.
+     Si algún día querés una portada de imagen, poné el poster en el
+     <video> y borrale la clase .cover al div: manda el poster.
+     --------------------------------------------------------------------- */
+  .cover{
     position:absolute;
-    top:14px;left:14px;
+    inset:0;
     z-index:3;
+    display:flex;
+    cursor:pointer;
+    background:
+      linear-gradient(105deg, #141414 0%, #141414 54%, rgba(20,20,20,.72) 64%, rgba(20,20,20,.15) 100%),
+      var(--carbon);
+    transition:opacity .3s ease;
+  }
+  .cover.hidden{opacity:0;pointer-events:none}
+  /* Foto opcional del lado derecho */
+  .cover-photo{
+    position:absolute;
+    inset:0 0 0 auto;
+    width:52%;
+    object-fit:cover;
+    z-index:-1;
+  }
+  .cover-body{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:10px;
+    padding:22px 24px;
+    width:62%;
+  }
+  .cover-top{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:2px;
+  }
+  .cover-num{
     background:var(--beige);
     color:var(--black);
     font-size:12px;font-weight:900;
-    letter-spacing:.08em;
-    border-radius:8px;
-    padding:5px 11px;
-    pointer-events:none;
+    letter-spacing:.06em;
+    border-radius:6px;
+    padding:3px 10px;
   }
+  .cover-eyebrow{
+    font-size:9.5px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;
+    color:#B0B0B0;
+  }
+  .cover-rule{width:34px;height:3px;background:var(--beige);border-radius:2px}
+  .cover-title{
+    font-size:clamp(19px,2vw,26px);
+    font-weight:800;
+    color:#fff;
+    line-height:1.15;
+    letter-spacing:-.02em;
+  }
+  .cover-sub{
+    font-size:13px;
+    font-weight:600;
+    color:var(--beige);
+    line-height:1.35;
+  }
+  .cover-tag{
+    align-self:flex-start;
+    border:1px solid rgba(196,180,154,.55);
+    color:var(--beige-l);
+    font-size:11px;
+    font-weight:500;
+    border-radius:6px;
+    padding:6px 11px;
+    line-height:1.3;
+  }
+  /* Botón de play, abajo a la derecha para no tapar el texto */
+  .cover-play{
+    position:absolute;
+    right:20px;bottom:18px;
+    z-index:3;
+    width:52px;height:52px;
+    border-radius:50%;
+    background:var(--beige);
+    border:none;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    box-shadow:0 6px 22px rgba(0,0,0,.45);
+    transition:transform .2s ease,background .2s ease;
+  }
+  .cover:hover .cover-play{background:#fff;transform:scale(1.08)}
+  .cover-play svg{width:20px;height:20px;fill:var(--black);margin-left:3px}
+
   .qa-body{padding:20px 22px 22px}
   .qa-tag{
     font-size:10px;font-weight:800;
@@ -526,7 +610,50 @@
     aspect-ratio:9/16;
     background:#000;
   }
-  .win-media video{width:100%;height:100%;object-fit:cover;display:block}
+  .win-media video,.win-media iframe{width:100%;height:100%;object-fit:cover;display:block;border:0}
+
+  /* ---------------------------------------------------------------------
+     PORTADA SIMPLE + FACHADA DE YOUTUBE
+     El iframe de YouTube NO se carga hasta que el visitante hace click:
+     la página abre rápido y no arrastra el peso de 6 reproductores.
+     --------------------------------------------------------------------- */
+  .cover--simple{
+    background:var(--carbon);
+    align-items:center;
+    justify-content:center;
+  }
+  .cover--simple .cover-photo{
+    inset:0;
+    width:100%;
+    z-index:0;
+  }
+  .cover--simple::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(17,17,17,.35) 0%,rgba(17,17,17,.15) 45%,rgba(17,17,17,.75) 100%);
+    z-index:1;
+  }
+  .cover--simple .cover-play{
+    position:relative;
+    right:auto;bottom:auto;
+    z-index:2;
+    width:64px;height:64px;
+  }
+  .cover--simple .cover-play svg{width:24px;height:24px}
+  .cover-caption{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    z-index:2;
+    padding:14px 16px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#fff;
+    text-align:center;
+    pointer-events:none;
+  }
   .win-body{
     padding:16px 18px;
     border-top:1px solid var(--border2);
@@ -738,6 +865,10 @@
     .section-head{margin-bottom:40px}
     .qa-grid{grid-template-columns:1fr;gap:24px}
     .qa-card:last-child:nth-child(odd){max-width:none;margin-inline:0}
+    .cover-body{width:74%;padding:18px 20px}
+    .cover-photo{width:46%}
+    .cover-play{width:44px;height:44px;right:16px;bottom:14px}
+    .cover-play svg{width:17px;height:17px}
     .quotes-grid{grid-template-columns:1fr;gap:22px}
     .play-btn{width:68px;height:68px}
     .play-btn svg{width:28px;height:28px}
@@ -845,9 +976,17 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      PREGUNTAS FRECUENTES — 7 VÍDEOS PRE-LLAMADA
-     Para cada tarjeta reemplazá poster + src. Si usás Loom/Vimeo/YouTube,
-     borrá el <video> y pegá el <iframe> del embed en su lugar: el contenedor
-     .qa-media ya fuerza el 16:9 y el iframe se adapta solo.
+
+     PORTADAS: no hace falta diseñar una imagen por vídeo. Cada tarjeta lleva
+     un <div class="cover"> dibujado con HTML y CSS (número, pregunta, línea
+     de apoyo, etiqueta y botón de play) que desaparece al hacer click.
+     Se edita como texto, pesa cero y siempre queda con la tipografía y los
+     colores de Founders.
+
+     - Para poner tu foto en la portada: descomentá el <img class="cover-photo">.
+     - Para usar una imagen de portada propia en lugar de la portada HTML:
+       poné la URL en el atributo poster del <video> y borrá el div .cover.
+     - Sólo hay que reemplazar el src del <video>.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="section section--light bleed">
   <div class="container">
@@ -860,94 +999,196 @@
 
     <div class="qa-grid">
 
+      <!-- ── 01 ─────────────────────────────────────────────────────────
+           Plantilla de tarjeta. Copiá este bloque entero para añadir vídeos.
+           ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
         <div class="qa-media">
-          <span class="qa-num">01</span>
-          <video controls preload="metadata" playsinline
-                 poster="URL_POSTER_01.jpg" src="URL_VIDEO_01.mp4"></video>
+          <div class="cover">
+            <!-- Foto opcional a la derecha de la portada:
+            <img class="cover-photo" src="URL_FOTO_PORTADA_01.jpg" alt="" loading="lazy"> -->
+            <div class="cover-body">
+              <div class="cover-top">
+                <span class="cover-num">01</span>
+                <span class="cover-eyebrow">Vídeo pre-llamada</span>
+              </div>
+              <div class="cover-rule"></div>
+              <h3 class="cover-title">TÍTULO DEL VÍDEO 01</h3>
+              <p class="cover-sub">Línea de apoyo en beige</p>
+              <span class="cover-tag">Etiqueta corta opcional</span>
+            </div>
+            <button class="cover-play" type="button" aria-label="Reproducir vídeo 01">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video preload="none" playsinline src="URL_VIDEO_01.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿Cuál es el % real de éxito?</h3>
-          <p>No todos nuestros clientes llegan a resultados. Antes de que hablemos, quiero contarte algo que la mayoría de mentores no te va a decir.</p>
+          <h3>TÍTULO DEL VÍDEO 01</h3>
+          <p>Descripción de dos líneas de lo que responde este vídeo.</p>
         </div>
       </article>
 
+      <!-- ── 02 ───────────────────────────────────────────────────────── -->
       <article class="qa-card">
         <div class="qa-media">
-          <span class="qa-num">02</span>
-          <video controls preload="metadata" playsinline
-                 poster="URL_POSTER_02.jpg" src="URL_VIDEO_02.mp4"></video>
+          <div class="cover">
+            <div class="cover-body">
+              <div class="cover-top">
+                <span class="cover-num">02</span>
+                <span class="cover-eyebrow">Vídeo pre-llamada</span>
+              </div>
+              <div class="cover-rule"></div>
+              <h3 class="cover-title">TÍTULO DEL VÍDEO 02</h3>
+              <p class="cover-sub">Línea de apoyo en beige</p>
+              <span class="cover-tag">Etiqueta corta opcional</span>
+            </div>
+            <button class="cover-play" type="button" aria-label="Reproducir vídeo 02">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video preload="none" playsinline src="URL_VIDEO_02.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>Qué se espera de vos</h3>
-          <p>Si trabajamos juntos, yo pongo todo de mi parte. Pero hay algo que no puedo poner por vos.</p>
+          <h3>TÍTULO DEL VÍDEO 02</h3>
+          <p>Descripción de dos líneas de lo que responde este vídeo.</p>
         </div>
       </article>
 
+      <!-- ── 03 ───────────────────────────────────────────────────────── -->
       <article class="qa-card">
         <div class="qa-media">
-          <span class="qa-num">03</span>
-          <video controls preload="metadata" playsinline
-                 poster="URL_POSTER_03.jpg" src="URL_VIDEO_03.mp4"></video>
+          <div class="cover">
+            <div class="cover-body">
+              <div class="cover-top">
+                <span class="cover-num">03</span>
+                <span class="cover-eyebrow">Vídeo pre-llamada</span>
+              </div>
+              <div class="cover-rule"></div>
+              <h3 class="cover-title">TÍTULO DEL VÍDEO 03</h3>
+              <p class="cover-sub">Línea de apoyo en beige</p>
+              <span class="cover-tag">Etiqueta corta opcional</span>
+            </div>
+            <button class="cover-play" type="button" aria-label="Reproducir vídeo 03">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video preload="none" playsinline src="URL_VIDEO_03.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿Qué es exactamente el programa?</h3>
-          <p>Quiero que llegues a nuestra conversación con claridad total sobre qué hacemos y cómo lo hacemos.</p>
+          <h3>TÍTULO DEL VÍDEO 03</h3>
+          <p>Descripción de dos líneas de lo que responde este vídeo.</p>
         </div>
       </article>
 
+      <!-- ── 04 ───────────────────────────────────────────────────────── -->
       <article class="qa-card">
         <div class="qa-media">
-          <span class="qa-num">04</span>
-          <video controls preload="metadata" playsinline
-                 poster="URL_POSTER_04.jpg" src="URL_VIDEO_04.mp4"></video>
+          <div class="cover">
+            <div class="cover-body">
+              <div class="cover-top">
+                <span class="cover-num">04</span>
+                <span class="cover-eyebrow">Vídeo pre-llamada</span>
+              </div>
+              <div class="cover-rule"></div>
+              <h3 class="cover-title">TÍTULO DEL VÍDEO 04</h3>
+              <p class="cover-sub">Línea de apoyo en beige</p>
+              <span class="cover-tag">Etiqueta corta opcional</span>
+            </div>
+            <button class="cover-play" type="button" aria-label="Reproducir vídeo 04">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video preload="none" playsinline src="URL_VIDEO_04.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿Qué pasa si no conseguís resultados?</h3>
-          <p>«¿Y si pago y no me funciona?» Es una pregunta válida y quiero respondértela con honestidad, antes de la llamada.</p>
+          <h3>TÍTULO DEL VÍDEO 04</h3>
+          <p>Descripción de dos líneas de lo que responde este vídeo.</p>
         </div>
       </article>
 
+      <!-- ── 05 ───────────────────────────────────────────────────────── -->
       <article class="qa-card">
         <div class="qa-media">
-          <span class="qa-num">05</span>
-          <video controls preload="metadata" playsinline
-                 poster="URL_POSTER_05.jpg" src="URL_VIDEO_05.mp4"></video>
+          <div class="cover">
+            <div class="cover-body">
+              <div class="cover-top">
+                <span class="cover-num">05</span>
+                <span class="cover-eyebrow">Vídeo pre-llamada</span>
+              </div>
+              <div class="cover-rule"></div>
+              <h3 class="cover-title">TÍTULO DEL VÍDEO 05</h3>
+              <p class="cover-sub">Línea de apoyo en beige</p>
+              <span class="cover-tag">Etiqueta corta opcional</span>
+            </div>
+            <button class="cover-play" type="button" aria-label="Reproducir vídeo 05">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video preload="none" playsinline src="URL_VIDEO_05.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿Cuánto demoran los resultados?</h3>
-          <p>Expectativas reales, sin filtros. «¿Cuánto tiempo tarda esto en funcionar?» Voy a ser muy directa con vos.</p>
+          <h3>TÍTULO DEL VÍDEO 05</h3>
+          <p>Descripción de dos líneas de lo que responde este vídeo.</p>
         </div>
       </article>
 
+      <!-- ── 06 ───────────────────────────────────────────────────────── -->
       <article class="qa-card">
         <div class="qa-media">
-          <span class="qa-num">06</span>
-          <video controls preload="metadata" playsinline
-                 poster="URL_POSTER_06.jpg" src="URL_VIDEO_06.mp4"></video>
+          <div class="cover">
+            <div class="cover-body">
+              <div class="cover-top">
+                <span class="cover-num">06</span>
+                <span class="cover-eyebrow">Vídeo pre-llamada</span>
+              </div>
+              <div class="cover-rule"></div>
+              <h3 class="cover-title">TÍTULO DEL VÍDEO 06</h3>
+              <p class="cover-sub">Línea de apoyo en beige</p>
+              <span class="cover-tag">Etiqueta corta opcional</span>
+            </div>
+            <button class="cover-play" type="button" aria-label="Reproducir vídeo 06">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video preload="none" playsinline src="URL_VIDEO_06.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿Por qué tiene este precio?</h3>
-          <p>Si tu primera reacción fue «esto es caro», este vídeo es para vos.</p>
+          <h3>TÍTULO DEL VÍDEO 06</h3>
+          <p>Descripción de dos líneas de lo que responde este vídeo.</p>
         </div>
       </article>
 
+      <!-- ── 07 ───────────────────────────────────────────────────────── -->
       <article class="qa-card">
         <div class="qa-media">
-          <span class="qa-num">07</span>
-          <video controls preload="metadata" playsinline
-                 poster="URL_POSTER_07.jpg" src="URL_VIDEO_07.mp4"></video>
+          <div class="cover">
+            <div class="cover-body">
+              <div class="cover-top">
+                <span class="cover-num">07</span>
+                <span class="cover-eyebrow">Vídeo pre-llamada</span>
+              </div>
+              <div class="cover-rule"></div>
+              <h3 class="cover-title">TÍTULO DEL VÍDEO 07</h3>
+              <p class="cover-sub">Línea de apoyo en beige</p>
+              <span class="cover-tag">Etiqueta corta opcional</span>
+            </div>
+            <button class="cover-play" type="button" aria-label="Reproducir vídeo 07">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video preload="none" playsinline src="URL_VIDEO_07.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿Necesito invertir en publicidad?</h3>
-          <p>Para que el programa funcione, ¿vas a necesitar presupuesto adicional? Te respondo directamente.</p>
+          <h3>TÍTULO DEL VÍDEO 07</h3>
+          <p>Descripción de dos líneas de lo que responde este vídeo.</p>
         </div>
       </article>
 
@@ -982,8 +1223,28 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CASOS DE ÉXITO — VÍDEOS VERTICALES
-     Duplicá un bloque <article class="win-card"> por cada testimonio.
+     CASOS DE ÉXITO — VÍDEOS VERTICALES DE YOUTUBE
+
+     Cada tarjeta es una "fachada": se muestra una portada y el reproductor
+     de YouTube NO se carga hasta que el visitante hace click. Así la página
+     abre rápido aunque tengas 20 testimonios.
+
+     Sólo hay que poner el ID del vídeo en data-yt. El ID es lo que va
+     después de "v=" o de "/shorts/":
+        https://www.youtube.com/watch?v=dQw4w9WgXcQ   →  dQw4w9WgXcQ
+        https://www.youtube.com/shorts/dQw4w9WgXcQ    →  dQw4w9WgXcQ
+
+     PORTADA: si no ponés data-poster, se usa la miniatura automática de
+     YouTube. Ojo: en vídeos verticales esa miniatura es 16:9 y se recorta
+     bastante, así que para los verticales conviene subir una portada 9:16
+     propia a GHL y ponerla en data-poster.
+
+     Si algún testimonio lo tenés en MP4 en vez de YouTube, usá este bloque:
+       <div class="win-media">
+         <button class="sound-badge" type="button"> ... </button>
+         <video controls playsinline muted preload="metadata"
+                poster="URL_POSTER.jpg" src="URL_VIDEO.mp4"></video>
+       </div>
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="section section--cream bleed">
   <div class="container">
@@ -997,13 +1258,14 @@
     <div class="wins-grid" id="winsGrid">
 
       <article class="win-card">
-        <div class="win-media">
-          <button class="sound-badge" type="button">
-            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
-            Activá el sonido
-          </button>
-          <video controls playsinline muted preload="metadata"
-                 poster="URL_POSTER_WIN_01.jpg" src="URL_VIDEO_WIN_01.mp4"></video>
+        <div class="win-media yt" data-yt="ID_YOUTUBE_01" data-poster="URL_PORTADA_WIN_01.jpg">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 01">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">Ver testimonio</span>
+          </div>
         </div>
         <div class="win-body">
           <h3>«Me di a conocer a más gente a través de este proceso digital»</h3>
@@ -1012,13 +1274,14 @@
       </article>
 
       <article class="win-card">
-        <div class="win-media">
-          <button class="sound-badge" type="button">
-            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
-            Activá el sonido
-          </button>
-          <video controls playsinline muted preload="metadata"
-                 poster="URL_POSTER_WIN_02.jpg" src="URL_VIDEO_WIN_02.mp4"></video>
+        <div class="win-media yt" data-yt="ID_YOUTUBE_02" data-poster="URL_PORTADA_WIN_02.jpg">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 02">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">Ver testimonio</span>
+          </div>
         </div>
         <div class="win-body">
           <h3>«Para mí ha sido bueno tener un programa que ha sido claro»</h3>
@@ -1027,13 +1290,14 @@
       </article>
 
       <article class="win-card">
-        <div class="win-media">
-          <button class="sound-badge" type="button">
-            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
-            Activá el sonido
-          </button>
-          <video controls playsinline muted preload="metadata"
-                 poster="URL_POSTER_WIN_03.jpg" src="URL_VIDEO_WIN_03.mp4"></video>
+        <div class="win-media yt" data-yt="ID_YOUTUBE_03" data-poster="URL_PORTADA_WIN_03.jpg">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 03">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">Ver testimonio</span>
+          </div>
         </div>
         <div class="win-body">
           <h3>«Ordené mi oferta y dejé de improvisar cada mes»</h3>
@@ -1042,13 +1306,14 @@
       </article>
 
       <article class="win-card">
-        <div class="win-media">
-          <button class="sound-badge" type="button">
-            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
-            Activá el sonido
-          </button>
-          <video controls playsinline muted preload="metadata"
-                 poster="URL_POSTER_WIN_04.jpg" src="URL_VIDEO_WIN_04.mp4"></video>
+        <div class="win-media yt" data-yt="ID_YOUTUBE_04" data-poster="URL_PORTADA_WIN_04.jpg">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 04">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">Ver testimonio</span>
+          </div>
         </div>
         <div class="win-body">
           <h3>«Pasé de cobrar por hora a vender un programa completo»</h3>
@@ -1057,13 +1322,14 @@
       </article>
 
       <article class="win-card">
-        <div class="win-media">
-          <button class="sound-badge" type="button">
-            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
-            Activá el sonido
-          </button>
-          <video controls playsinline muted preload="metadata"
-                 poster="URL_POSTER_WIN_05.jpg" src="URL_VIDEO_WIN_05.mp4"></video>
+        <div class="win-media yt" data-yt="ID_YOUTUBE_05" data-poster="URL_PORTADA_WIN_05.jpg">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 05">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">Ver testimonio</span>
+          </div>
         </div>
         <div class="win-body">
           <h3>«Por fin tengo un sistema y no dependo del boca a boca»</h3>
@@ -1072,13 +1338,14 @@
       </article>
 
       <article class="win-card">
-        <div class="win-media">
-          <button class="sound-badge" type="button">
-            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
-            Activá el sonido
-          </button>
-          <video controls playsinline muted preload="metadata"
-                 poster="URL_POSTER_WIN_06.jpg" src="URL_VIDEO_WIN_06.mp4"></video>
+        <div class="win-media yt" data-yt="ID_YOUTUBE_06" data-poster="URL_PORTADA_WIN_06.jpg">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 06">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">Ver testimonio</span>
+          </div>
         </div>
         <div class="win-body">
           <h3>«Recuperé la inversión antes de terminar el programa»</h3>
@@ -1267,7 +1534,56 @@
     });
   }
 
-  /* ---------- 2. BADGES "ACTIVÁ EL SONIDO" ---------- */
+  /* ---------- 2. PORTADAS HTML: click → arranca el vídeo ---------- */
+  document.querySelectorAll('.cover').forEach(function (cover) {
+    var media = cover.parentElement;
+    if (!media) return;
+
+    cover.addEventListener('click', function () {
+      // Caso A: fachada de YouTube → recién ahora creamos el iframe
+      if (media.classList.contains('yt')) {
+        var id = media.dataset.yt;
+        if (!id || id.indexOf('ID_YOUTUBE') === 0) return; // todavía sin configurar
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
+                     '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+        iframe.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.title = 'Testimonio';
+        media.appendChild(iframe);
+        cover.remove();
+        return;
+      }
+
+      // Caso B: vídeo propio
+      var video = media.querySelector('video');
+      if (!video) return;
+      video.controls = true;
+      video.muted = false;
+      var p = video.play();
+      if (p !== undefined) p.catch(function () {});
+      cover.classList.add('hidden');
+    });
+  });
+
+  /* Miniatura automática de YouTube cuando no hay portada propia */
+  document.querySelectorAll('.win-media.yt').forEach(function (media) {
+    var img = media.querySelector('.cover-photo');
+    if (!img) return;
+    var custom = media.dataset.poster;
+    var id = media.dataset.yt;
+    if (custom && custom.indexOf('URL_PORTADA') !== 0) {
+      img.src = custom;
+    } else if (id && id.indexOf('ID_YOUTUBE') !== 0) {
+      img.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+      // maxresdefault no existe en todos los vídeos: caemos a la que sí
+      img.addEventListener('error', function () {
+        img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+      }, { once: true });
+    }
+  });
+
+  /* ---------- 3. BADGES "ACTIVÁ EL SONIDO" ---------- */
   document.querySelectorAll('.sound-badge').forEach(function (badge) {
     var scope = badge.parentElement;
     var video = scope ? scope.querySelector('video') : null;
@@ -1292,7 +1608,7 @@
     });
   });
 
-  /* ---------- 3. UN SOLO VÍDEO SONANDO A LA VEZ ---------- */
+  /* ---------- 4. UN SOLO VÍDEO SONANDO A LA VEZ ---------- */
   var allVideos = Array.prototype.slice.call(document.querySelectorAll('video'));
   allVideos.forEach(function (v) {
     v.addEventListener('play', function () {
