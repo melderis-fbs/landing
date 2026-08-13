@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prepará tu llamada · Founders · Business Strategists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* =========================================================================
+   FOUNDERS · BUSINESS STRATEGISTS — LANDING PRE-LLAMADA
+   Identidad: negro / blanco-crema / beige dorado. Tipografía: Inter.
+   Pensada para pegarse en un bloque "Custom Code / HTML" de GoHighLevel.
+   ========================================================================= */
+
+  /* ---------- TOKENS DE MARCA (mismos que synoma/index.html) ---------- */
+  :root{
+    --black:#111111;
+    --ink:#1c1c1c;
+    --carbon:#191919;      /* fondo de tarjetas sobre negro */
+    --carbon-2:#1F1F1F;
+    --muted:#7A7A7A;
+    --soft:#9A9A9A;
+    --bg:#FFFFFF;
+    --paper:#FAFAF8;
+    --cream:#F2EEE9;
+    --beige:#C4B49A;       /* acento principal */
+    --beige-d:#A8946F;     /* acento sobre fondo claro */
+    --beige-l:#DFD4C1;     /* acento sobre fondo oscuro */
+    --border:#E6E1DA;
+    --border2:#EFEBE4;
+    --line-dark:rgba(196,180,154,.22);
+    --orange:#c96a1f;
+    --maxw:1180px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  /* GHL mete fondos blancos propios: forzamos el lienzo. */
+  html,body{
+    background:var(--black) !important;
+    background-color:var(--black) !important;
+    margin:0 !important;
+    padding:0 !important;
+    width:100% !important;
+    overflow-x:hidden !important;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    color:var(--ink);
+    font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    position:relative;
+    min-height:100vh;
+  }
+  /* Capa de seguridad para tapar el blanco de GHL por detrás */
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:var(--black);
+    z-index:-1;
+  }
+
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* Full-bleed: que las secciones ocupen todo el ancho aunque GHL
+     las meta dentro de un contenedor con max-width. */
+  .bleed{
+    position:relative;
+    left:50%;
+    right:50%;
+    margin-left:-50vw;
+    margin-right:-50vw;
+    width:100vw;
+  }
+
+  /* ---------- COMPONENTES DE LA CASA ---------- */
+  .kicker{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--beige);
+    font-weight:700;
+  }
+  .kicker--dark{color:var(--beige-d)}
+
+  .pill{
+    display:inline-block;
+    background:var(--beige);
+    color:#fff;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    border-radius:99px;
+    padding:5px 13px;
+  }
+
+  .btn{
+    display:inline-block;
+    background:var(--black);
+    border:none;
+    border-radius:99px;
+    padding:16px 34px;
+    color:#fff;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    font-family:inherit;
+    text-decoration:none;
+    transition:opacity .15s ease,transform .15s ease;
+  }
+  .btn:hover{opacity:.85;transform:translateY(-1px)}
+  .btn--light{background:#fff;color:var(--black)}
+  .btn--beige{background:var(--beige);color:#fff}
+
+  h1,h2,h3{letter-spacing:-.02em;line-height:1.08;font-weight:800}
+  .hl{color:var(--beige)}
+  .hl-d{color:var(--beige-d)}
+
+  /* Resaltado tipo marcador beige (para citas de testimonios) */
+  mark{
+    background:linear-gradient(transparent 12%,rgba(196,180,154,.5) 12%,rgba(196,180,154,.5) 88%,transparent 88%);
+    color:inherit;
+    padding:0 1px;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+  }
+
+  /* =====================================================================
+     HEADER
+     ===================================================================== */
+  .header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(17,17,17,.94);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-dark);
+    padding:16px 0;
+  }
+  .header-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .logo img{height:42px;width:auto;display:block}
+  /* Fallback tipográfico si todavía no cargaste el logo */
+  .logo-word{color:#fff;font-weight:900;font-size:20px;letter-spacing:.01em}
+  .logo-word span{color:var(--beige)}
+
+  /* =====================================================================
+     HERO
+     ===================================================================== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(196,180,154,.16) 0%, transparent 62%),
+      var(--black);
+    padding:72px 0 64px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(circle at 18% 28%, rgba(196,180,154,.09) 0%, transparent 42%),
+      radial-gradient(circle at 82% 68%, rgba(168,148,111,.07) 0%, transparent 42%);
+    pointer-events:none;
+  }
+  .hero-content{position:relative;text-align:center;z-index:1}
+  .hero .kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:26px;
+  }
+  .hero .kicker::before{
+    content:'';
+    width:7px;height:7px;
+    background:var(--beige);
+    border-radius:50%;
+    box-shadow:0 0 12px rgba(196,180,154,.9);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.55;transform:scale(1.35)}
+  }
+  .hero h1{
+    font-size:clamp(28px,4.4vw,52px);
+    text-transform:uppercase;
+    color:#fff;
+    max-width:940px;
+    margin:0 auto 26px;
+    font-weight:800;
+    line-height:1.1;
+  }
+  .hero-sub{
+    font-size:17px;
+    color:#B8B8B8;
+    max-width:680px;
+    margin:0 auto 44px;
+    line-height:1.65;
+    font-weight:400;
+  }
+
+  /* ---------- PLAYER PRINCIPAL ---------- */
+  .player{
+    position:relative;
+    max-width:900px;
+    margin:0 auto;
+    background:var(--carbon);
+    border:1px solid var(--line-dark);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(196,180,154,.06);
+  }
+  .player-media{
+    position:relative;
+    aspect-ratio:16/9;
+    background:#000;
+    overflow:hidden;
+    cursor:pointer;
+  }
+  .player-media video{
+    width:100%;height:100%;
+    display:block;
+    object-fit:cover;
+  }
+  /* En pantalla completa el vídeo se ve entero, no recortado */
+  video:fullscreen,video:-webkit-full-screen{
+    object-fit:contain !important;
+    background:#000;
+  }
+  .player-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(17,17,17,.55);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+    cursor:pointer;
+    transition:opacity .3s ease;
+    z-index:5;
+  }
+  .player-overlay.hidden{opacity:0;pointer-events:none}
+  .play-btn{
+    width:86px;height:86px;
+    border-radius:50%;
+    background:var(--beige);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 0 rgba(196,180,154,.6);
+    animation:ripple 2.4s infinite;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .player-media:hover .play-btn{background:#fff;transform:scale(1.07)}
+  .play-btn svg{width:34px;height:34px;fill:var(--black);margin-left:5px}
+  @keyframes ripple{
+    0%{box-shadow:0 0 0 0 rgba(196,180,154,.5)}
+    100%{box-shadow:0 0 0 28px rgba(196,180,154,0)}
+  }
+  .overlay-text{
+    display:flex;align-items:center;gap:11px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:#fff;
+    background:rgba(17,17,17,.7);
+    border:1px solid var(--line-dark);
+    border-radius:99px;
+    padding:10px 20px;
+    text-shadow:0 1px 6px rgba(0,0,0,.6);
+  }
+  .overlay-text svg{width:17px;height:17px;fill:var(--beige);flex-shrink:0}
+
+  .speed-bar{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;
+    padding:12px 18px;
+    background:var(--carbon-2);
+    border-top:1px solid var(--line-dark);
+    flex-wrap:wrap;
+  }
+  .speed-label{
+    font-size:10px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;
+    color:var(--soft);
+  }
+  .speed-buttons{display:flex;gap:6px;flex-wrap:wrap}
+  .speed-btn{
+    background:transparent;
+    border:1px solid var(--line-dark);
+    color:#CFCFCF;
+    padding:6px 13px;
+    font-family:inherit;
+    font-size:12px;font-weight:700;
+    cursor:pointer;
+    border-radius:99px;
+    transition:all .18s ease;
+  }
+  .speed-btn:hover{border-color:var(--beige);color:#fff}
+  .speed-btn.active{background:var(--beige);border-color:var(--beige);color:var(--black)}
+
+  /* =====================================================================
+     MARQUEE
+     ===================================================================== */
+  .marquee{
+    background:var(--beige);
+    overflow:hidden;
+    padding:15px 0;
+    border-top:1px solid rgba(17,17,17,.15);
+    border-bottom:1px solid rgba(17,17,17,.15);
+  }
+  .marquee-track{
+    display:flex;
+    white-space:nowrap;
+    animation:marquee 42s linear infinite;
+    width:max-content;
+  }
+  .marquee-item{
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--black);
+    display:inline-flex;
+    align-items:center;
+    padding:0 26px;
+  }
+  .marquee-item::after{
+    content:'';
+    width:5px;height:5px;
+    border-radius:50%;
+    background:rgba(17,17,17,.45);
+    margin-left:26px;
+  }
+  @keyframes marquee{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(-50%)}
+  }
+
+  /* =====================================================================
+     SECCIONES GENÉRICAS
+     ===================================================================== */
+  .section{padding:88px 0;position:relative}
+  .section--light{background:var(--paper);color:var(--ink)}
+  .section--cream{background:var(--cream);color:var(--ink)}
+  .section--dark{background:var(--black);color:#fff}
+
+  .section-head{text-align:center;max-width:760px;margin:0 auto 56px}
+  .section-head .kicker{margin-bottom:14px}
+  .section-head h2{
+    font-size:clamp(27px,3.9vw,44px);
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .section--light h2,.section--cream h2{color:var(--black)}
+  .section--dark h2{color:#fff}
+  .section-head p{
+    font-size:16px;
+    line-height:1.65;
+    color:var(--muted);
+    max-width:620px;
+    margin:0 auto;
+  }
+  .section--dark .section-head p{color:#A5A5A5}
+
+  /* =====================================================================
+     GRID DE VÍDEOS PRE-LLAMADA (16:9, numerados)
+     ===================================================================== */
+  .qa-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:32px;
+  }
+  /* Si el número de vídeos es impar, el último queda centrado */
+  .qa-card:last-child:nth-child(odd){
+    grid-column:1 / -1;
+    max-width:calc(50% - 16px);
+    margin-inline:auto;
+  }
+  .qa-card{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:18px;
+    overflow:hidden;
+    transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
+  }
+  .qa-card:hover{
+    border-color:var(--beige);
+    transform:translateY(-3px);
+    box-shadow:0 18px 40px rgba(17,17,17,.09);
+  }
+  .qa-media{
+    position:relative;
+    aspect-ratio:16/9;
+    background:#000;
+  }
+  .qa-media video,.qa-media iframe{
+    width:100%;height:100%;
+    display:block;
+    border:0;
+    object-fit:cover;
+  }
+  .qa-num{
+    position:absolute;
+    top:14px;left:14px;
+    z-index:3;
+    background:var(--beige);
+    color:var(--black);
+    font-size:12px;font-weight:900;
+    letter-spacing:.08em;
+    border-radius:8px;
+    padding:5px 11px;
+    pointer-events:none;
+  }
+  .qa-body{padding:20px 22px 22px}
+  .qa-tag{
+    font-size:10px;font-weight:800;
+    letter-spacing:.2em;text-transform:uppercase;
+    color:var(--beige-d);
+    display:block;margin-bottom:8px;
+  }
+  .qa-body h3{
+    font-size:19px;
+    font-weight:800;
+    color:var(--black);
+    line-height:1.25;
+    margin-bottom:8px;
+  }
+  .qa-body p{
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.55;
+  }
+
+  /* =====================================================================
+     BLOQUE DEMO (vídeo ancho sobre negro)
+     ===================================================================== */
+  .demo-head{
+    text-align:center;
+    max-width:820px;
+    margin:0 auto 44px;
+  }
+  .demo-head h2{
+    font-size:clamp(23px,3.1vw,36px);
+    font-weight:600;
+    line-height:1.35;
+    letter-spacing:-.015em;
+    color:#fff;
+    text-transform:none;
+  }
+  .demo-head h2 b{font-weight:800;color:var(--beige)}
+  .demo-frame{
+    max-width:980px;
+    margin:0 auto;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid var(--line-dark);
+    background:#000;
+    box-shadow:0 30px 70px rgba(0,0,0,.5);
+    position:relative;
+    aspect-ratio:16/9;
+  }
+  .demo-frame video,.demo-frame iframe{
+    width:100%;height:100%;display:block;border:0;object-fit:cover;
+  }
+
+  /* Badge "Activá el sonido" reutilizable */
+  .sound-badge{
+    position:absolute;
+    top:14px;left:14px;
+    z-index:4;
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(17,17,17,.82);
+    border:1px solid var(--line-dark);
+    color:#fff;
+    font-size:11px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;
+    border-radius:99px;
+    padding:8px 14px;
+    cursor:pointer;
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    transition:background .2s ease,opacity .25s ease;
+  }
+  .sound-badge:hover{background:var(--beige);color:var(--black);border-color:var(--beige)}
+  .sound-badge svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+  .sound-badge.hidden{opacity:0;pointer-events:none}
+
+  /* =====================================================================
+     CASOS DE ÉXITO — VÍDEOS VERTICALES 9:16
+     ===================================================================== */
+  .wins-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .win-card{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:18px;
+    overflow:hidden;
+    transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
+  }
+  .win-card:hover{
+    border-color:var(--beige);
+    transform:translateY(-3px);
+    box-shadow:0 18px 40px rgba(17,17,17,.09);
+  }
+  .win-media{
+    position:relative;
+    aspect-ratio:9/16;
+    background:#000;
+  }
+  .win-media video{width:100%;height:100%;object-fit:cover;display:block}
+  .win-body{
+    padding:16px 18px;
+    border-top:1px solid var(--border2);
+  }
+  .win-body h3{
+    font-size:15px;font-weight:700;
+    color:var(--black);
+    line-height:1.4;
+    letter-spacing:-.01em;
+    margin-bottom:4px;
+  }
+  .win-body span{
+    font-size:12px;
+    color:var(--muted);
+    font-weight:500;
+  }
+
+  /* =====================================================================
+     TESTIMONIOS EN TARJETA (captura + foto + estrellas)
+     ===================================================================== */
+  .quotes-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+  }
+  .quote-card{
+    position:relative;
+    background:var(--carbon);
+    border-radius:18px;
+    padding:34px 30px;
+    overflow:hidden;
+  }
+  /* Marco fino beige por dentro */
+  .quote-card::before{
+    content:'';
+    position:absolute;
+    inset:12px;
+    border:1px solid rgba(196,180,154,.45);
+    border-radius:10px;
+    pointer-events:none;
+  }
+  /* Comillas grandes en outline: apertura arriba-izq, cierre abajo-der */
+  .quote-card::after,
+  .quote-inner::after{
+    position:absolute;
+    font-size:112px;
+    line-height:.78;
+    font-weight:800;
+    color:transparent;
+    -webkit-text-stroke:2px rgba(196,180,154,.55);
+    pointer-events:none;
+  }
+  .quote-card::after{
+    content:'\201C';
+    top:14px;left:22px;
+    z-index:2;
+  }
+  .quote-inner::after{
+    content:'\201D';
+    left:38px;bottom:-32px;
+    z-index:4;
+  }
+  .quote-inner{
+    position:relative;
+    z-index:3;
+    display:flex;
+    align-items:center;
+    gap:26px;
+  }
+  .quote-shot{
+    flex:1;
+    min-width:0;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+  .quote-shot img{width:100%;height:auto;display:block}
+  /* Alternativa sin captura: cita en texto */
+  .quote-text{
+    flex:1;
+    min-width:0;
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:10px;
+    /* el padding inferior deja sitio a la comilla de cierre */
+    padding:20px 22px 54px;
+    font-size:14.5px;
+    line-height:1.6;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+  .quote-person{
+    flex-shrink:0;
+    width:170px;
+    text-align:center;
+  }
+  .quote-person img{
+    width:112px;height:112px;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    margin:0 auto 14px;
+    border:2px solid rgba(196,180,154,.5);
+    background:var(--carbon-2);
+  }
+  .quote-person strong{
+    display:block;
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:-.01em;
+    margin-bottom:6px;
+  }
+  .quote-person small{
+    display:block;
+    color:var(--soft);
+    font-size:11.5px;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .stars{color:var(--beige);font-size:16px;letter-spacing:2px}
+
+  /* =====================================================================
+     CTA FINAL
+     ===================================================================== */
+  .cta{
+    background:var(--cream);
+    padding:84px 0;
+    text-align:center;
+  }
+  .cta h2{
+    font-size:clamp(27px,3.6vw,42px);
+    text-transform:uppercase;
+    color:var(--black);
+    max-width:760px;
+    margin:16px auto 18px;
+  }
+  .cta p{
+    font-size:16px;
+    color:var(--muted);
+    max-width:560px;
+    margin:0 auto 34px;
+    line-height:1.65;
+  }
+  .cta-note{
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:.06em;
+    margin-top:20px;
+  }
+
+  /* =====================================================================
+     CHECKLIST
+     ===================================================================== */
+  .checklist{
+    max-width:620px;
+    margin:0 auto;
+    text-align:left;
+    display:grid;
+    gap:12px;
+  }
+  .check-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px 18px;
+  }
+  .check-item svg{
+    width:20px;height:20px;
+    flex-shrink:0;
+    margin-top:1px;
+    fill:var(--beige-d);
+  }
+  .check-item span{
+    font-size:14.5px;
+    color:var(--ink);
+    font-weight:500;
+    line-height:1.5;
+  }
+
+  /* =====================================================================
+     FOOTER
+     ===================================================================== */
+  .footer{
+    background:var(--black);
+    padding:44px 0;
+    text-align:center;
+    border-top:1px solid var(--line-dark);
+  }
+  .footer img{height:30px;width:auto;margin:0 auto 14px;display:block;opacity:.55}
+  .footer .logo-word{opacity:.6;margin-bottom:12px}
+  .footer p{color:#5C5C5C;font-size:12px;letter-spacing:.04em}
+
+  /* =====================================================================
+     RESPONSIVE
+     ===================================================================== */
+  @media (max-width:900px){
+    .wins-grid{grid-template-columns:repeat(2,1fr)}
+    .quote-inner{flex-direction:column;gap:22px}
+    .quote-person{width:100%}
+  }
+  @media (max-width:768px){
+    .hero{padding:52px 0 46px}
+    .hero-sub{font-size:15.5px;margin-bottom:34px}
+    .section{padding:64px 0}
+    .section-head{margin-bottom:40px}
+    .qa-grid{grid-template-columns:1fr;gap:24px}
+    .qa-card:last-child:nth-child(odd){max-width:none;margin-inline:0}
+    .quotes-grid{grid-template-columns:1fr;gap:22px}
+    .play-btn{width:68px;height:68px}
+    .play-btn svg{width:28px;height:28px}
+    .overlay-text{font-size:10px;letter-spacing:.18em;padding:9px 16px}
+    .logo img{height:34px}
+    .marquee-item{font-size:10.5px;letter-spacing:.18em;padding:0 18px}
+    .marquee-item::after{margin-left:18px}
+    .cta{padding:64px 0}
+  }
+  @media (max-width:560px){
+    .wins-grid{grid-template-columns:1fr;gap:20px}
+    .quote-card{padding:28px 20px}
+    .quote-card::after{font-size:100px;left:14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     HEADER
+     REEMPLAZAR: subí el logo de Founders a GHL (Media Library) y pegá la URL
+     en el src. Si preferís el logo tipográfico, borrá el <img> y descomentá
+     el <div class="logo-word">.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<header class="header bleed">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="URL_LOGO_FOUNDERS_BLANCO.png" alt="Founders · Business Strategists">
+      <!-- <div class="logo-word">FOUNDERS<span>.</span></div> -->
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     HERO + VÍDEO PRINCIPAL
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="hero bleed">
+  <div class="container hero-content">
+
+    <span class="kicker">Antes de la llamada</span>
+
+    <h1>
+      Construimos en tu negocio todo lo necesario para facturar
+      <span class="hl">+5K a +10K</span> con tu marca personal
+    </h1>
+
+    <p class="hero-sub">
+      Es necesario que veas este vídeo y todos los de abajo antes de nuestra llamada.
+      Así aprovechamos al máximo el tiempo juntos y llegamos directo a diseñar tu plan.
+    </p>
+
+    <!-- REEMPLAZAR: poster + source del vídeo principal -->
+    <div class="player">
+      <div class="player-media" id="heroMedia">
+        <video id="heroVideo" playsinline muted preload="metadata"
+               poster="URL_POSTER_VIDEO_PRINCIPAL.jpg">
+          <source src="URL_VIDEO_PRINCIPAL.mp4" type="video/mp4">
+          Tu navegador no soporta vídeo HTML5.
+        </video>
+
+        <div class="player-overlay" id="heroOverlay">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="overlay-text">
+            <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            Hacé click para escuchar
+          </div>
+        </div>
+      </div>
+
+      <div class="speed-bar">
+        <span class="speed-label">Velocidad</span>
+        <div class="speed-buttons" id="speedButtons">
+          <button class="speed-btn active" data-speed="1">1x</button>
+          <button class="speed-btn" data-speed="1.25">1.25x</button>
+          <button class="speed-btn" data-speed="1.5">1.5x</button>
+          <button class="speed-btn" data-speed="1.75">1.75x</button>
+          <button class="speed-btn" data-speed="2">2x</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MARQUEE — editá las frases. Están duplicadas a propósito (el bucle
+     necesita las dos mitades idénticas para que el loop sea invisible).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div class="marquee bleed">
+  <div class="marquee-track">
+    <span class="marquee-item">+280 personas trabajando con nosotros</span>
+    <span class="marquee-item">De profesión a negocio digital rentable</span>
+    <span class="marquee-item">Implementación en 12 semanas</span>
+    <span class="marquee-item">Business Strategists</span>
+    <span class="marquee-item">Marca personal que factura</span>
+    <span class="marquee-item">+280 personas trabajando con nosotros</span>
+    <span class="marquee-item">De profesión a negocio digital rentable</span>
+    <span class="marquee-item">Implementación en 12 semanas</span>
+    <span class="marquee-item">Business Strategists</span>
+    <span class="marquee-item">Marca personal que factura</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     PREGUNTAS FRECUENTES — 7 VÍDEOS PRE-LLAMADA
+     Para cada tarjeta reemplazá poster + src. Si usás Loom/Vimeo/YouTube,
+     borrá el <video> y pegá el <iframe> del embed en su lugar: el contenedor
+     .qa-media ya fuerza el 16:9 y el iframe se adapta solo.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="section section--light bleed">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="kicker kicker--dark">Antes de la llamada</span>
+      <h2>Algunas preguntas frecuentes <span class="hl-d">respondidas</span></h2>
+      <p>Mirá estos vídeos para llegar a la llamada con toda la información que necesitás. Están ordenados: seguí la numeración.</p>
+    </div>
+
+    <div class="qa-grid">
+
+      <article class="qa-card">
+        <div class="qa-media">
+          <span class="qa-num">01</span>
+          <video controls preload="metadata" playsinline
+                 poster="URL_POSTER_01.jpg" src="URL_VIDEO_01.mp4"></video>
+        </div>
+        <div class="qa-body">
+          <span class="qa-tag">Vídeo pre-llamada</span>
+          <h3>¿Cuál es el % real de éxito?</h3>
+          <p>No todos nuestros clientes llegan a resultados. Antes de que hablemos, quiero contarte algo que la mayoría de mentores no te va a decir.</p>
+        </div>
+      </article>
+
+      <article class="qa-card">
+        <div class="qa-media">
+          <span class="qa-num">02</span>
+          <video controls preload="metadata" playsinline
+                 poster="URL_POSTER_02.jpg" src="URL_VIDEO_02.mp4"></video>
+        </div>
+        <div class="qa-body">
+          <span class="qa-tag">Vídeo pre-llamada</span>
+          <h3>Qué se espera de vos</h3>
+          <p>Si trabajamos juntos, yo pongo todo de mi parte. Pero hay algo que no puedo poner por vos.</p>
+        </div>
+      </article>
+
+      <article class="qa-card">
+        <div class="qa-media">
+          <span class="qa-num">03</span>
+          <video controls preload="metadata" playsinline
+                 poster="URL_POSTER_03.jpg" src="URL_VIDEO_03.mp4"></video>
+        </div>
+        <div class="qa-body">
+          <span class="qa-tag">Vídeo pre-llamada</span>
+          <h3>¿Qué es exactamente el programa?</h3>
+          <p>Quiero que llegues a nuestra conversación con claridad total sobre qué hacemos y cómo lo hacemos.</p>
+        </div>
+      </article>
+
+      <article class="qa-card">
+        <div class="qa-media">
+          <span class="qa-num">04</span>
+          <video controls preload="metadata" playsinline
+                 poster="URL_POSTER_04.jpg" src="URL_VIDEO_04.mp4"></video>
+        </div>
+        <div class="qa-body">
+          <span class="qa-tag">Vídeo pre-llamada</span>
+          <h3>¿Qué pasa si no conseguís resultados?</h3>
+          <p>«¿Y si pago y no me funciona?» Es una pregunta válida y quiero respondértela con honestidad, antes de la llamada.</p>
+        </div>
+      </article>
+
+      <article class="qa-card">
+        <div class="qa-media">
+          <span class="qa-num">05</span>
+          <video controls preload="metadata" playsinline
+                 poster="URL_POSTER_05.jpg" src="URL_VIDEO_05.mp4"></video>
+        </div>
+        <div class="qa-body">
+          <span class="qa-tag">Vídeo pre-llamada</span>
+          <h3>¿Cuánto demoran los resultados?</h3>
+          <p>Expectativas reales, sin filtros. «¿Cuánto tiempo tarda esto en funcionar?» Voy a ser muy directa con vos.</p>
+        </div>
+      </article>
+
+      <article class="qa-card">
+        <div class="qa-media">
+          <span class="qa-num">06</span>
+          <video controls preload="metadata" playsinline
+                 poster="URL_POSTER_06.jpg" src="URL_VIDEO_06.mp4"></video>
+        </div>
+        <div class="qa-body">
+          <span class="qa-tag">Vídeo pre-llamada</span>
+          <h3>¿Por qué tiene este precio?</h3>
+          <p>Si tu primera reacción fue «esto es caro», este vídeo es para vos.</p>
+        </div>
+      </article>
+
+      <article class="qa-card">
+        <div class="qa-media">
+          <span class="qa-num">07</span>
+          <video controls preload="metadata" playsinline
+                 poster="URL_POSTER_07.jpg" src="URL_VIDEO_07.mp4"></video>
+        </div>
+        <div class="qa-body">
+          <span class="qa-tag">Vídeo pre-llamada</span>
+          <h3>¿Necesito invertir en publicidad?</h3>
+          <p>Para que el programa funcione, ¿vas a necesitar presupuesto adicional? Te respondo directamente.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BLOQUE DEMO — vídeo ancho tipo grabación de pantalla
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="section section--dark bleed">
+  <div class="container">
+
+    <div class="demo-head">
+      <h2>
+        Esto es exactamente lo que hacemos para transformar tu profesión en un
+        <b>negocio digital rentable</b> — y podemos hacerlo con vos en 12 semanas
+      </h2>
+    </div>
+
+    <!-- REEMPLAZAR: poster + src de la grabación de pantalla -->
+    <div class="demo-frame">
+      <button class="sound-badge" id="demoBadge" type="button">
+        <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
+        Activá el sonido
+      </button>
+      <video id="demoVideo" controls playsinline muted preload="metadata"
+             poster="URL_POSTER_DEMO.jpg" src="URL_VIDEO_DEMO.mp4"></video>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     CASOS DE ÉXITO — VÍDEOS VERTICALES
+     Duplicá un bloque <article class="win-card"> por cada testimonio.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="section section--cream bleed">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="kicker kicker--dark">Casos de éxito reales</span>
+      <h2>+280 personas <span class="hl-d">trabajando con nosotros</span></h2>
+      <p>Sus resultados podrían ser los tuyos en los próximos meses. Tocá cualquier vídeo para activar el sonido.</p>
+    </div>
+
+    <div class="wins-grid" id="winsGrid">
+
+      <article class="win-card">
+        <div class="win-media">
+          <button class="sound-badge" type="button">
+            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
+            Activá el sonido
+          </button>
+          <video controls playsinline muted preload="metadata"
+                 poster="URL_POSTER_WIN_01.jpg" src="URL_VIDEO_WIN_01.mp4"></video>
+        </div>
+        <div class="win-body">
+          <h3>«Me di a conocer a más gente a través de este proceso digital»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+      <article class="win-card">
+        <div class="win-media">
+          <button class="sound-badge" type="button">
+            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
+            Activá el sonido
+          </button>
+          <video controls playsinline muted preload="metadata"
+                 poster="URL_POSTER_WIN_02.jpg" src="URL_VIDEO_WIN_02.mp4"></video>
+        </div>
+        <div class="win-body">
+          <h3>«Para mí ha sido bueno tener un programa que ha sido claro»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+      <article class="win-card">
+        <div class="win-media">
+          <button class="sound-badge" type="button">
+            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
+            Activá el sonido
+          </button>
+          <video controls playsinline muted preload="metadata"
+                 poster="URL_POSTER_WIN_03.jpg" src="URL_VIDEO_WIN_03.mp4"></video>
+        </div>
+        <div class="win-body">
+          <h3>«Ordené mi oferta y dejé de improvisar cada mes»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+      <article class="win-card">
+        <div class="win-media">
+          <button class="sound-badge" type="button">
+            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
+            Activá el sonido
+          </button>
+          <video controls playsinline muted preload="metadata"
+                 poster="URL_POSTER_WIN_04.jpg" src="URL_VIDEO_WIN_04.mp4"></video>
+        </div>
+        <div class="win-body">
+          <h3>«Pasé de cobrar por hora a vender un programa completo»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+      <article class="win-card">
+        <div class="win-media">
+          <button class="sound-badge" type="button">
+            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
+            Activá el sonido
+          </button>
+          <video controls playsinline muted preload="metadata"
+                 poster="URL_POSTER_WIN_05.jpg" src="URL_VIDEO_WIN_05.mp4"></video>
+        </div>
+        <div class="win-body">
+          <h3>«Por fin tengo un sistema y no dependo del boca a boca»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+      <article class="win-card">
+        <div class="win-media">
+          <button class="sound-badge" type="button">
+            <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
+            Activá el sonido
+          </button>
+          <video controls playsinline muted preload="metadata"
+                 poster="URL_POSTER_WIN_06.jpg" src="URL_VIDEO_WIN_06.mp4"></video>
+        </div>
+        <div class="win-body">
+          <h3>«Recuperé la inversión antes de terminar el programa»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     TESTIMONIOS EN TARJETA (captura de WhatsApp/Instagram + persona)
+     Cada tarjeta admite dos formatos:
+       A) .quote-shot  → captura de pantalla real (recomendado)
+       B) .quote-text  → cita escrita, con <mark> para resaltar en beige
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="section section--dark bleed">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="kicker">La prueba</span>
+      <h2>Está en <span class="hl">sus palabras</span></h2>
+      <p>Mensajes reales de clientes que ya están viviendo el cambio.</p>
+    </div>
+
+    <div class="quotes-grid">
+
+      <!-- Formato A: captura de pantalla -->
+      <article class="quote-card">
+        <div class="quote-inner">
+          <div class="quote-shot">
+            <img src="URL_CAPTURA_TESTIMONIO_01.jpg" alt="Testimonio" loading="lazy">
+          </div>
+          <div class="quote-person">
+            <img src="URL_FOTO_PERSONA_01.jpg" alt="" loading="lazy">
+            <strong>Nombre Apellido</strong>
+            <small>Cliente Founders</small>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="quote-card">
+        <div class="quote-inner">
+          <div class="quote-shot">
+            <img src="URL_CAPTURA_TESTIMONIO_02.jpg" alt="Testimonio" loading="lazy">
+          </div>
+          <div class="quote-person">
+            <img src="URL_FOTO_PERSONA_02.jpg" alt="" loading="lazy">
+            <strong>Nombre Apellido</strong>
+            <small>Cliente Founders</small>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Formato B: cita escrita con resaltado beige -->
+      <article class="quote-card">
+        <div class="quote-inner">
+          <div class="quote-text">
+            Lo que más valoro del programa fue el cambio de mentalidad, tener un
+            <mark>acompañamiento muy cercano todo el tiempo y un paso a paso bien ordenado</mark>.
+            Al final eso te da tranquilidad y la sensación de que hay un norte.
+          </div>
+          <div class="quote-person">
+            <img src="URL_FOTO_PERSONA_03.jpg" alt="" loading="lazy">
+            <strong>Nombre Apellido</strong>
+            <small>Cliente Founders</small>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="quote-card">
+        <div class="quote-inner">
+          <div class="quote-text">
+            Muchísimas gracias. Es <mark>por el programa que hoy he podido ayudar en los últimos
+            5 meses a más de 250 personas</mark>. En verdad estoy haciendo el cambio, pero esto no
+            sería posible sin la mentalidad, el orden y el sistema.
+          </div>
+          <div class="quote-person">
+            <img src="URL_FOTO_PERSONA_04.jpg" alt="" loading="lazy">
+            <strong>Nombre Apellido</strong>
+            <small>Cliente Founders</small>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     CTA FINAL + CHECKLIST
+     REEMPLAZAR: el href del botón por tu link de calendario de GHL.
+     Si esta página se muestra DESPUÉS de agendar, cambiá el botón por el
+     bloque de confirmación (o borrá la sección entera).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="cta bleed">
+  <div class="container">
+
+    <span class="kicker kicker--dark">Último paso</span>
+    <h2>Llegá a la llamada con <span class="hl-d">todo listo</span></h2>
+    <p>Si ya viste los vídeos, estás en el 10% de personas que llega preparada. Esa llamada rinde el triple.</p>
+
+    <div class="checklist">
+      <div class="check-item">
+        <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+        <span>Viste el vídeo principal completo</span>
+      </div>
+      <div class="check-item">
+        <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+        <span>Viste los 7 vídeos de preguntas frecuentes</span>
+      </div>
+      <div class="check-item">
+        <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+        <span>Anotaste tus dudas para resolverlas en la llamada</span>
+      </div>
+      <div class="check-item">
+        <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+        <span>Vas a conectarte desde un lugar tranquilo, con buena señal</span>
+      </div>
+    </div>
+
+    <p class="cta-note" style="margin-top:34px">
+      <a class="btn" href="URL_CALENDARIO_GHL">Confirmar mi llamada</a>
+    </p>
+
+    <p class="cta-note">¿Necesitás reprogramar? Escribinos y lo movemos sin problema.</p>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════════════ -->
+<footer class="footer bleed">
+  <div class="container">
+    <img src="URL_LOGO_FOUNDERS_BLANCO.png" alt="Founders">
+    <p>© Founders · Business Strategists — Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<script>
+/* =========================================================================
+   INTERACCIONES
+   ========================================================================= */
+(function () {
+  'use strict';
+
+  /* ---------- 1. VÍDEO PRINCIPAL: overlay + sonido + velocidad ---------- */
+  var heroVideo   = document.getElementById('heroVideo');
+  var heroOverlay = document.getElementById('heroOverlay');
+  var speedBox    = document.getElementById('speedButtons');
+
+  if (heroVideo && heroOverlay) {
+    // Si no hay poster, mostramos un fotograma en vez de un rectángulo negro.
+    var seekToFrame = function () {
+      try {
+        if (heroVideo.duration && heroVideo.duration > 0.5) heroVideo.currentTime = 0.5;
+      } catch (e) {}
+    };
+    if (heroVideo.readyState >= 1) seekToFrame();
+    else heroVideo.addEventListener('loadedmetadata', seekToFrame, { once: true });
+
+    heroOverlay.addEventListener('click', function (e) {
+      e.stopPropagation();
+      heroVideo.muted = false;
+      heroVideo.currentTime = 0;
+      heroVideo.controls = true;
+      var p = heroVideo.play();
+      if (p !== undefined) p.catch(function () { /* autoplay bloqueado: al menos quitamos el overlay */ });
+      heroOverlay.classList.add('hidden');
+    });
+  }
+
+  if (speedBox && heroVideo) {
+    speedBox.addEventListener('click', function (e) {
+      var btn = e.target.closest('.speed-btn');
+      if (!btn) return;
+      heroVideo.playbackRate = parseFloat(btn.dataset.speed);
+      speedBox.querySelectorAll('.speed-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  }
+
+  /* ---------- 2. BADGES "ACTIVÁ EL SONIDO" ---------- */
+  document.querySelectorAll('.sound-badge').forEach(function (badge) {
+    var scope = badge.parentElement;
+    var video = scope ? scope.querySelector('video') : null;
+    if (!video) return;
+
+    var unmute = function (e) {
+      if (e) e.stopPropagation();
+      video.muted = false;
+      video.volume = 1;
+      var p = video.play();
+      if (p !== undefined) p.catch(function () {});
+      badge.classList.add('hidden');
+    };
+
+    badge.addEventListener('click', unmute);
+    video.addEventListener('play', function () {
+      if (video.muted) unmute();
+    });
+    // Si el visitante silencia a mano, devolvemos el badge.
+    video.addEventListener('volumechange', function () {
+      if (video.muted) badge.classList.remove('hidden');
+    });
+  });
+
+  /* ---------- 3. UN SOLO VÍDEO SONANDO A LA VEZ ---------- */
+  var allVideos = Array.prototype.slice.call(document.querySelectorAll('video'));
+  allVideos.forEach(function (v) {
+    v.addEventListener('play', function () {
+      allVideos.forEach(function (other) {
+        if (other !== v && !other.paused) other.pause();
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
