@@ -82,9 +82,40 @@ están guardados los archivos, no desde donde se sirven: hay que bajarlos y resu
 
 | Opción | Cuándo | Qué se gana / se pierde |
 |---|---|---|
-| **Media Library de GHL** | Vídeos cortos, hero, verticales | Mantiene el player propio (velocidad, badge de sonido, portada HTML). Sin streaming adaptativo: comprimí a 1080p H.264 ~2–3 Mbps |
-| **YouTube (oculto)** | Testimonios | Ya está montado con fachada: el iframe se carga sólo al hacer click. Se pierde el player propio |
-| **Bunny Stream / Vimeo** | La grabación de pantalla larga | Streaming adaptativo. Se pierde el player propio |
+| **Loom** | Los 7 vídeos pre-llamada y la grabación de pantalla | Streaming propio, velocidad integrada y **analítica de visualización**: sabés quién vio qué antes de la llamada. Se pierde el player propio, se mantiene la portada HTML |
+| **Media Library de GHL** | Hero y verticales cortos | Mantiene el player propio entero (velocidad, badge de sonido). Sin streaming adaptativo: comprimí a 1080p H.264 ~2–3 Mbps |
+| **YouTube (oculto)** | Testimonios | Fachada montada: el iframe se carga sólo al hacer click. Se pierde el player propio |
+| **Bunny Stream / Vimeo** | Alternativa a Loom si necesitás más control | Streaming adaptativo. Se pierde el player propio |
+
+### Loom
+
+Para pasar una tarjeta a Loom, añadí `data-loom` con el ID al `div.qa-media` y borrá
+el `<video>`. El ID es lo que va después de `/share/`:
+
+```
+https://www.loom.com/share/a1b2c3d4e5f6...   →   a1b2c3d4e5f6...
+```
+
+```html
+<div class="qa-media" data-loom="a1b2c3d4e5f6">
+  <div class="cover"> ... </div>
+</div>
+```
+
+La portada HTML se mantiene y el reproductor se carga recién al hacer click.
+
+Tres cosas a tener en cuenta:
+
+- El vídeo tiene que estar compartido como **"cualquiera con el enlace"**, si no el embed
+  sale en blanco.
+- En el plan gratuito de Loom hay **tope de duración por vídeo y de número de vídeos**.
+  Si los pre-llamada pasan de ese límite, hace falta plan de pago.
+- Loom es para grabaciones de pantalla y cámara en horizontal. Los **testimonios verticales
+  no van bien en Loom** (los encaja en 16:9 con bandas): esos dejalos en YouTube.
+
+Los parámetros del embed (`hideEmbedTopBar`, `hide_owner`, `hide_share`, `hide_title`) ocultan
+la barra de Loom. Si alguno cambia de nombre en el futuro, las mismas opciones están en el
+diálogo de compartir de Loom.
 
 Convertí los `.mov` de iPhone a `.mp4` real antes de subirlos. La referencia original servía
 `.mov` declarados como `video/mp4` y eso falla en varios navegadores.
