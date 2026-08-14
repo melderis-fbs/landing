@@ -208,11 +208,26 @@
   .hero-sub{
     font-size:17px;
     color:#B8B8B8;
-    max-width:680px;
-    margin:0 auto 44px;
+    max-width:700px;
+    margin:0 auto 22px;
     line-height:1.65;
     font-weight:400;
   }
+  /* Instrucción + coste de tiempo, justo encima del reproductor */
+  .hero-note{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    margin:0 auto 44px;
+    padding:9px 18px;
+    border:1px solid var(--line-dark);
+    border-radius:99px;
+    background:rgba(196,180,154,.06);
+    color:var(--beige-l);
+    font-size:13.5px;
+    font-weight:600;
+  }
+  .hero-note svg{width:15px;height:15px;fill:var(--beige);flex-shrink:0}
 
   /* ---------- PLAYER PRINCIPAL ---------- */
   .player{
@@ -876,17 +891,23 @@
 <section class="hero bleed">
   <div class="container hero-content">
 
-    <span class="kicker">Antes de la llamada</span>
+    <span class="kicker">Preparate para tu asesoría</span>
 
     <h1>
-      Construimos en tu negocio todo lo necesario para
-      <span class="hl">facturar de forma predecible</span>, con el expertise que ya tenés
+      Tu asesoría todavía <span class="hl">no está confirmada</span>
     </h1>
 
     <p class="hero-sub">
-      Es necesario que veas este vídeo y todos los demás antes de nuestra llamada. Así
-      aprovechamos al máximo el tiempo juntos y lo dedicamos a tu negocio, no a explicarte
-      cómo trabajamos.
+      Antes hay un proceso de selección. No trabajamos con todo el mundo: queremos
+      asegurarnos de que lo que hacemos resuelve el problema que tenés hoy. Estos vídeos
+      son parte de ese proceso — con ellos llegás a la sesión y hablamos de tu negocio,
+      no de cómo trabajamos nosotros.
+    </p>
+
+    <!-- REEMPLAZAR: el total de minutos de los 7 vídeos -->
+    <p class="hero-note">
+      <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+      Miralos antes de la sesión · XX minutos en total
     </p>
 
     <!-- ─────────────────────────────────────────────────────────────────
@@ -1425,8 +1446,8 @@
   <div class="container">
 
     <span class="kicker kicker--dark">Último paso</span>
-    <h2>Llegá a la llamada con <span class="hl-d">todo listo</span></h2>
-    <p>Si ya viste los vídeos, estás en el 10% de personas que llega preparada. Esa llamada rinde el triple.</p>
+    <h2>Llegá a la sesión con <span class="hl-d">todo listo</span></h2>
+    <p>El proceso de selección también mira esto: quien llega habiendo visto los vídeos aprovecha la sesión el triple.</p>
 
     <div class="checklist">
       <div class="check-item">
@@ -1439,7 +1460,7 @@
       </div>
       <div class="check-item">
         <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-        <span>Anotaste tus dudas para resolverlas en la llamada</span>
+        <span>Anotaste tus dudas para resolverlas en la sesión</span>
       </div>
       <div class="check-item">
         <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
@@ -1447,11 +1468,13 @@
       </div>
     </div>
 
+    <!-- REEMPLAZAR: el enlace del siguiente paso de tu proceso de selección
+         (formulario de aplicación, elección de horario, lo que corresponda) -->
     <p class="cta-note" style="margin-top:34px">
-      <a class="btn" href="URL_CALENDARIO_GHL">Confirmar mi llamada</a>
+      <a class="btn" href="URL_SIGUIENTE_PASO_GHL">Ya vi los vídeos, quiero avanzar</a>
     </p>
 
-    <p class="cta-note">¿Necesitás reprogramar? Escribinos y lo movemos sin problema.</p>
+    <p class="cta-note">Si después de verlos pensás que no es para vos, decínoslo. También está bien.</p>
 
   </div>
 </section>
