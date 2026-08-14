@@ -531,38 +531,6 @@
     line-height:1.55;
   }
 
-  /* =====================================================================
-     BLOQUE DEMO (vídeo ancho sobre negro)
-     ===================================================================== */
-  .demo-head{
-    text-align:center;
-    max-width:820px;
-    margin:0 auto 44px;
-  }
-  .demo-head h2{
-    font-size:clamp(23px,3.1vw,36px);
-    font-weight:600;
-    line-height:1.35;
-    letter-spacing:-.015em;
-    color:#fff;
-    text-transform:none;
-  }
-  .demo-head h2 b{font-weight:800;color:var(--beige)}
-  .demo-frame{
-    max-width:980px;
-    margin:0 auto;
-    border-radius:18px;
-    overflow:hidden;
-    border:1px solid var(--line-dark);
-    background:#000;
-    box-shadow:0 30px 70px rgba(0,0,0,.5);
-    position:relative;
-    aspect-ratio:16/9;
-  }
-  .demo-frame video,.demo-frame iframe{
-    width:100%;height:100%;display:block;border:0;object-fit:cover;
-  }
-
   /* Badge "Activá el sonido" reutilizable */
   .sound-badge{
     position:absolute;
@@ -920,7 +888,15 @@
       la usamos para revisar tu caso concreto, en vez de gastarla explicándote cómo trabajamos.
     </p>
 
-    <!-- REEMPLAZAR: poster + source del vídeo principal -->
+    <!-- ─────────────────────────────────────────────────────────────────
+         VÍDEO DE BIENVENIDA — pendiente de grabar.
+         Los 7 vídeos pre-llamada van todos en el grid de abajo, así que
+         este hueco pide uno corto (60-90 s) de bienvenida: "gracias por
+         agendar, mirá estos 7 vídeos antes de la sesión y llegá con las
+         preguntas anotadas".
+         Si preferís no grabarlo, borrá el <div class="player"> entero:
+         la página arranca directo en el grid y no queda ningún hueco.
+         ───────────────────────────────────────────────────────────────── -->
     <div class="player">
       <div class="player-media" id="heroMedia">
         <video id="heroVideo" playsinline muted preload="metadata"
@@ -1026,8 +1002,8 @@
                 <span class="cover-eyebrow">Vídeo pre-llamada</span>
               </div>
               <div class="cover-rule"></div>
-              <h3 class="cover-title">¿Y si no tengo tiempo para esto?</h3>
-              <p class="cover-sub">La paradoja más cara que existe</p>
+              <h3 class="cover-title">¿Qué es Founders y para quién es?</h3>
+              <p class="cover-sub">Mi historia y por qué existe esto</p>
             </div>
             <button class="cover-play" type="button" aria-label="Reproducir vídeo 01">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1037,8 +1013,8 @@
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿Y si no tengo tiempo para esto?</h3>
-          <p>«Cada semana que no tenés el sistema estás cambiando tu tiempo por dinero. Y ese modelo tiene un techo.»</p>
+          <h3>¿Qué es Founders y para quién es?</h3>
+          <p>«Construí un negocio que dependía 100% de mí, de mi energía, de mi disponibilidad. Eso no era un negocio, era una cárcel.»</p>
         </div>
       </article>
 
@@ -1055,8 +1031,8 @@
                 <span class="cover-eyebrow">Vídeo pre-llamada</span>
               </div>
               <div class="cover-rule"></div>
-              <h3 class="cover-title">Ya invertí antes y no me funcionó</h3>
-              <p class="cover-sub">Por qué esta vez sería distinto</p>
+              <h3 class="cover-title">¿Qué resultados consiguen, y cómo?</h3>
+              <p class="cover-sub">+80 casos documentados · ROD y APM</p>
             </div>
             <button class="cover-play" type="button" aria-label="Reproducir vídeo 02">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1066,8 +1042,8 @@
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>Ya invertí antes y no me funcionó</h3>
-          <p>«El escepticismo después de una mala experiencia no es un problema, es inteligencia.»</p>
+          <h3>¿Qué resultados consiguen, y cómo?</h3>
+          <p>«No inventamos expertise: construimos la arquitectura que hace que el que ya existe funcione como negocio.»</p>
         </div>
       </article>
 
@@ -1084,8 +1060,8 @@
                 <span class="cover-eyebrow">Vídeo pre-llamada</span>
               </div>
               <div class="cover-rule"></div>
-              <h3 class="cover-title">¿No me conviene contratar una agencia?</h3>
-              <p class="cover-sub">Primero una cosa, después la otra</p>
+              <h3 class="cover-title">Un caso real, de principio a fin</h3>
+              <p class="cover-sub">Alex: de vocación pura a negocio con estructura</p>
             </div>
             <button class="cover-play" type="button" aria-label="Reproducir vídeo 03">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1095,8 +1071,8 @@
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿No me conviene contratar una agencia?</h3>
-          <p>«Una agencia amplifica lo que ya funciona. No puede construir desde cero lo que todavía no existe.»</p>
+          <h3>Un caso real, de principio a fin</h3>
+          <p>«Yo no tenía un sistema, ni siquiera una mentalidad comercial. Era totalmente vocacional.»</p>
         </div>
       </article>
 
@@ -1113,8 +1089,8 @@
                 <span class="cover-eyebrow">Vídeo pre-llamada</span>
               </div>
               <div class="cover-rule"></div>
-              <h3 class="cover-title">¿Esto va a ser una llamada de venta?</h3>
-              <p class="cover-sub">Cómo es el proceso desde el primer contacto</p>
+              <h3 class="cover-title">¿Y si no tengo tiempo para esto?</h3>
+              <p class="cover-sub">La paradoja más cara que existe</p>
             </div>
             <button class="cover-play" type="button" aria-label="Reproducir vídeo 04">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1124,8 +1100,8 @@
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿Esto va a ser una llamada de venta?</h3>
-          <p>«El objetivo de esa conversación no es cerrar, es diagnosticar.»</p>
+          <h3>¿Y si no tengo tiempo para esto?</h3>
+          <p>«Cada semana que no tenés el sistema estás cambiando tu tiempo por dinero. Y ese modelo tiene un techo.»</p>
         </div>
       </article>
 
@@ -1142,8 +1118,8 @@
                 <span class="cover-eyebrow">Vídeo pre-llamada</span>
               </div>
               <div class="cover-rule"></div>
-              <h3 class="cover-title">¿Qué resultados consiguen, y cómo?</h3>
-              <p class="cover-sub">+80 casos documentados · ROD y APM</p>
+              <h3 class="cover-title">Ya invertí antes y no me funcionó</h3>
+              <p class="cover-sub">Por qué esta vez sería distinto</p>
             </div>
             <button class="cover-play" type="button" aria-label="Reproducir vídeo 05">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1153,38 +1129,70 @@
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
-          <h3>¿Qué resultados consiguen, y cómo?</h3>
-          <p>«No inventamos expertise: construimos la arquitectura que hace que el que ya existe funcione como negocio.»</p>
+          <h3>Ya invertí antes y no me funcionó</h3>
+          <p>«El escepticismo después de una mala experiencia no es un problema, es inteligencia.»</p>
+        </div>
+      </article>
+
+      <!-- ── 06 ───────────────────────────────────────────────────────
+           MP4 propio: dejá el <video> y cambiale el src.
+           Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
+           ───────────────────────────────────────────────────────────── -->
+      <article class="qa-card">
+        <div class="qa-media">
+          <div class="cover">
+            <div class="cover-body">
+              <div class="cover-top">
+                <span class="cover-num">06</span>
+                <span class="cover-eyebrow">Vídeo pre-llamada</span>
+              </div>
+              <div class="cover-rule"></div>
+              <h3 class="cover-title">¿No me conviene contratar una agencia?</h3>
+              <p class="cover-sub">Primero una cosa, después la otra</p>
+            </div>
+            <button class="cover-play" type="button" aria-label="Reproducir vídeo 06">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video preload="none" playsinline src="URL_VIDEO_06.mp4"></video>
+        </div>
+        <div class="qa-body">
+          <span class="qa-tag">Vídeo pre-llamada</span>
+          <h3>¿No me conviene contratar una agencia?</h3>
+          <p>«Una agencia amplifica lo que ya funciona. No puede construir desde cero lo que todavía no existe.»</p>
+        </div>
+      </article>
+
+      <!-- ── 07 ───────────────────────────────────────────────────────
+           MP4 propio: dejá el <video> y cambiale el src.
+           Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
+           ───────────────────────────────────────────────────────────── -->
+      <article class="qa-card">
+        <div class="qa-media">
+          <div class="cover">
+            <div class="cover-body">
+              <div class="cover-top">
+                <span class="cover-num">07</span>
+                <span class="cover-eyebrow">Vídeo pre-llamada</span>
+              </div>
+              <div class="cover-rule"></div>
+              <h3 class="cover-title">¿Esto va a ser una llamada de venta?</h3>
+              <p class="cover-sub">Cómo es el proceso desde el primer contacto</p>
+            </div>
+            <button class="cover-play" type="button" aria-label="Reproducir vídeo 07">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video preload="none" playsinline src="URL_VIDEO_07.mp4"></video>
+        </div>
+        <div class="qa-body">
+          <span class="qa-tag">Vídeo pre-llamada</span>
+          <h3>¿Esto va a ser una llamada de venta?</h3>
+          <p>«El objetivo de esa conversación no es cerrar, es diagnosticar.»</p>
         </div>
       </article>
 
     </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════════
-     BLOQUE DEMO — vídeo ancho tipo grabación de pantalla
-     ═══════════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark bleed">
-  <div class="container">
-
-    <div class="demo-head">
-      <h2>
-        Alex era excelente en lo suyo y aun así los números no cerraban. Esto es
-        <b>lo que cambió</b> cuando le dimos estructura al negocio
-      </h2>
-    </div>
-
-    <!-- REEMPLAZAR: poster + src de la grabación de pantalla -->
-    <div class="demo-frame">
-      <button class="sound-badge" id="demoBadge" type="button">
-        <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3z"/></svg>
-        Activá el sonido
-      </button>
-      <video id="demoVideo" controls playsinline muted preload="metadata"
-             poster="URL_POSTER_DEMO.jpg" src="URL_VIDEO_DEMO.mp4"></video>
-    </div>
-
   </div>
 </section>
 
@@ -1426,7 +1434,7 @@
       </div>
       <div class="check-item">
         <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-        <span>Viste los 5 vídeos de preguntas frecuentes</span>
+        <span>Viste los 7 vídeos de preguntas frecuentes</span>
       </div>
       <div class="check-item">
         <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
