@@ -1,13 +1,13 @@
 # Capturas de social proof
 
-Acá van las 30 capturas que se muestran en el mosaico de `index.html`.
+Acá van las 36 capturas que se muestran en el mosaico de `index.html`.
 
 ## Nombres
 
-Numeradas de `01` a `30`, con cero delante en las de un dígito:
+Numeradas de `01` a `36`, con cero delante en las de un dígito:
 
 ```
-01.jpg  02.jpg  03.jpg  …  29.jpg  30.jpg
+01.jpg  02.jpg  03.jpg  …  35.jpg  36.jpg
 ```
 
 La extensión puede ser `.jpg`, `.png` o `.jpeg` indistintamente: la página prueba las tres,
@@ -34,5 +34,5 @@ Dos cosas a tener en cuenta:
 ## Peso
 
 Conviene que cada captura no pase de ~300 KB. Son capturas de pantalla, así que con
-1080 px de ancho sobra. Treinta imágenes de 300 KB son 9 MB en total, pero como todas
+1080 px de ancho sobra. Treinta y seis imágenes de 300 KB son unos 11 MB en total, pero como todas
 cargan de forma diferida el visitante sólo baja las que ve.
