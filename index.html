@@ -714,6 +714,7 @@
     column-gap:14px;
   }
   .shot{
+    position:relative;
     break-inside:avoid;
     margin:0 0 14px;
     border-radius:12px;
@@ -723,10 +724,32 @@
     cursor:zoom-in;
     display:block;
     width:100%;
+    padding:0;
     transition:border-color .2s ease,transform .2s ease;
   }
   .shot:hover{border-color:var(--beige);transform:translateY(-2px)}
-  .shot img{width:100%;height:auto;display:block}
+  /* Muchas capturas son hilos larguísimos. Sin tope, una sola estira su
+     columna y el mosaico queda desparejo. Se recorta la vista previa por
+     abajo y la captura entera se lee en el visor. */
+  .shot img{
+    width:100%;
+    max-height:440px;
+    object-fit:cover;
+    object-position:top;
+    display:block;
+  }
+  /* El degradado avisa de que la captura sigue */
+  .shot::after{
+    content:'';
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:70px;
+    background:linear-gradient(transparent, rgba(17,17,17,.75));
+    opacity:0;
+    transition:opacity .2s ease;
+    pointer-events:none;
+  }
+  .shot.is-cropped::after{opacity:1}
 
   /* Visor a pantalla completa */
   .lightbox{
@@ -1405,10 +1428,10 @@
         <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/02.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/03.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/03.PNG" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/04.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/04.PNG" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
         <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/05.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
@@ -1420,91 +1443,91 @@
         <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/07.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/08.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/08.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/09.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/09.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/10.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/10.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/11.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/11.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/12.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/12.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/13.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/13.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/14.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/14.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/15.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/15.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/16.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/16.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/17.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/17.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/18.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/18.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/19.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/19.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/20.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/20.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/21.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/21.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/22.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/22.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/23.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/23.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/24.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/24.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/25.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/25.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/26.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/26.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/27.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/27.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/28.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/28.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/29.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/29.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/30.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/30.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/31.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/31.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/32.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/32.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/33.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/33.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/34.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/34.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/35.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/35.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
       <button class="shot" type="button">
-        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/36.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/36.png" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
       </button>
 
     </div>
@@ -1754,7 +1777,7 @@
      .png y .jpeg. En vez de exigir que se renombren todas, probamos las
      tres. Así la carpeta se sube tal como está. */
   document.querySelectorAll('#shots img').forEach(function (img) {
-    var exts = ['.jpg', '.png', '.jpeg'];
+    var exts = ['.jpg', '.png', '.jpeg', '.PNG', '.JPG', '.JPEG'];
     var i = 0;
     img.addEventListener('error', function () {
       if (i >= exts.length - 1) return;
@@ -1762,6 +1785,14 @@
       i++;
       img.src = base + exts[i];
     });
+    // El degradado sólo aparece si la captura realmente quedó recortada
+    var mark = function () {
+      if (!img.naturalWidth) return;
+      var real = img.naturalHeight * (img.clientWidth / img.naturalWidth);
+      if (real > img.clientHeight + 4) img.parentElement.classList.add('is-cropped');
+    };
+    if (img.complete) mark();
+    img.addEventListener('load', mark);
   });
 
   /* ---------- 5. VISOR DE CAPTURAS ---------- */
