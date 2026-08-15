@@ -532,6 +532,10 @@
     grid-template-columns:repeat(3,1fr);
     gap:24px;
   }
+  /* Con 10 tarjetas en 3 columnas la última queda sola: la centramos */
+  .win-card:last-child:nth-child(3n+1){
+    grid-column:2 / 3;
+  }
   .win-card{
     background:var(--bg);
     border:1px solid var(--border);
@@ -546,7 +550,9 @@
   }
   .win-media{
     position:relative;
-    aspect-ratio:9/16;
+    /* 16/9 = la miniatura de YouTube encaja exacta, sin recorte.
+       Si los testimonios fueran verticales, cambiá esto por 9/16. */
+    aspect-ratio:16/9;
     background:#000;
   }
   .win-media video,.win-media iframe{width:100%;height:100%;object-fit:cover;display:block;border:0}
@@ -570,7 +576,7 @@
     content:'';
     position:absolute;
     inset:0;
-    background:linear-gradient(180deg,rgba(17,17,17,.35) 0%,rgba(17,17,17,.15) 45%,rgba(17,17,17,.75) 100%);
+    background:linear-gradient(180deg,rgba(17,17,17,.15) 0%,rgba(17,17,17,.05) 40%,rgba(17,17,17,.85) 100%);
     z-index:1;
   }
   .cover--simple .cover-play{
@@ -584,14 +590,23 @@
     position:absolute;
     left:0;right:0;bottom:0;
     z-index:2;
-    padding:14px 16px;
-    font-size:12px;
+    padding:12px 14px;
+    font-size:13px;
     font-weight:700;
-    letter-spacing:.14em;
-    text-transform:uppercase;
+    letter-spacing:.02em;
     color:#fff;
-    text-align:center;
+    text-align:left;
     pointer-events:none;
+    text-shadow:0 1px 6px rgba(0,0,0,.7);
+  }
+  .cover-caption small{
+    display:block;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--beige);
+    margin-top:2px;
   }
   .win-body{
     padding:16px 18px;
@@ -1170,97 +1185,191 @@
     <div class="wins-grid" id="winsGrid">
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_01" data-poster="URL_PORTADA_WIN_01.jpg">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_01">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
             <button class="cover-play" type="button" aria-label="Reproducir testimonio 01">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">Ver testimonio</span>
+            <span class="cover-caption">
+              NOMBRE 01
+              <small>Profesión</small>
+            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Me di a conocer a más gente a través de este proceso digital»</h3>
+          <h3>«Frase corta que resuma su resultado.»</h3>
           <span>Cliente Founders</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_02" data-poster="URL_PORTADA_WIN_02.jpg">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_02">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
             <button class="cover-play" type="button" aria-label="Reproducir testimonio 02">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">Ver testimonio</span>
+            <span class="cover-caption">
+              NOMBRE 02
+              <small>Profesión</small>
+            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Para mí ha sido bueno tener un programa que ha sido claro»</h3>
+          <h3>«Frase corta que resuma su resultado.»</h3>
           <span>Cliente Founders</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_03" data-poster="URL_PORTADA_WIN_03.jpg">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_03">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
             <button class="cover-play" type="button" aria-label="Reproducir testimonio 03">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">Ver testimonio</span>
+            <span class="cover-caption">
+              NOMBRE 03
+              <small>Profesión</small>
+            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Ordené mi oferta y dejé de improvisar cada mes»</h3>
+          <h3>«Frase corta que resuma su resultado.»</h3>
           <span>Cliente Founders</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_04" data-poster="URL_PORTADA_WIN_04.jpg">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_04">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
             <button class="cover-play" type="button" aria-label="Reproducir testimonio 04">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">Ver testimonio</span>
+            <span class="cover-caption">
+              NOMBRE 04
+              <small>Profesión</small>
+            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Pasé de cobrar por hora a vender un programa completo»</h3>
+          <h3>«Frase corta que resuma su resultado.»</h3>
           <span>Cliente Founders</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_05" data-poster="URL_PORTADA_WIN_05.jpg">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_05">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
             <button class="cover-play" type="button" aria-label="Reproducir testimonio 05">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">Ver testimonio</span>
+            <span class="cover-caption">
+              NOMBRE 05
+              <small>Profesión</small>
+            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Por fin tengo un sistema y no dependo del boca a boca»</h3>
+          <h3>«Frase corta que resuma su resultado.»</h3>
           <span>Cliente Founders</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_06" data-poster="URL_PORTADA_WIN_06.jpg">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_06">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
             <button class="cover-play" type="button" aria-label="Reproducir testimonio 06">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">Ver testimonio</span>
+            <span class="cover-caption">
+              NOMBRE 06
+              <small>Profesión</small>
+            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Recuperé la inversión antes de terminar el programa»</h3>
+          <h3>«Frase corta que resuma su resultado.»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+      <article class="win-card">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_07">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 07">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">
+              NOMBRE 07
+              <small>Profesión</small>
+            </span>
+          </div>
+        </div>
+        <div class="win-body">
+          <h3>«Frase corta que resuma su resultado.»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+      <article class="win-card">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_08">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 08">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">
+              NOMBRE 08
+              <small>Profesión</small>
+            </span>
+          </div>
+        </div>
+        <div class="win-body">
+          <h3>«Frase corta que resuma su resultado.»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+      <article class="win-card">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_09">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 09">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">
+              NOMBRE 09
+              <small>Profesión</small>
+            </span>
+          </div>
+        </div>
+        <div class="win-body">
+          <h3>«Frase corta que resuma su resultado.»</h3>
+          <span>Cliente Founders</span>
+        </div>
+      </article>
+
+      <article class="win-card">
+        <div class="win-media yt" data-yt="ID_YOUTUBE_10">
+          <div class="cover cover--simple">
+            <img class="cover-photo" alt="" loading="lazy">
+            <button class="cover-play" type="button" aria-label="Reproducir testimonio 10">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="cover-caption">
+              NOMBRE 10
+              <small>Profesión</small>
+            </span>
+          </div>
+        </div>
+        <div class="win-body">
+          <h3>«Frase corta que resuma su resultado.»</h3>
           <span>Cliente Founders</span>
         </div>
       </article>

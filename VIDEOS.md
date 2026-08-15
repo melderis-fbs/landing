@@ -117,3 +117,23 @@ Para no volver a perderlos, conviene renombrarlos con el número de la página d
 06-agencia.mp4
 07-llamada-de-venta.mp4
 ```
+
+---
+
+## Testimonios · 10 vídeos de YouTube
+
+No hacen falta miniaturas. El grid está en 16:9, que es exactamente la proporción de la
+miniatura que genera YouTube, así que encaja sin recorte. Encima va una capa de marca en
+HTML: velo degradado, botón de play beige, nombre y profesión.
+
+Para cada uno hay que reemplazar tres cosas en `index.html`:
+
+| Placeholder | Qué va |
+|---|---|
+| `ID_YOUTUBE_01..10` | Sólo el ID, lo que va después de `v=` o de `/shorts/` |
+| `NOMBRE 01..10` + `Profesión` | Van sobre la portada, abajo a la izquierda |
+| `«Frase corta que resuma su resultado.»` | Va debajo del vídeo |
+
+Si algún testimonio fuera vertical, cambiá `aspect-ratio:16/9` por `9/16` en `.win-media`
+— es una línea. Pero en ese caso la miniatura de YouTube sí se recorta y conviene una
+portada propia en `data-poster`.
