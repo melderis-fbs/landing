@@ -1375,17 +1375,15 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
      MOSAICO DE CAPTURAS · SOCIAL PROOF
 
-     Cada captura es un <button class="shot"> con su <img> adentro. No lleva
-     ningún dato más: ni nombre, ni estrellas, ni texto. Para añadir una,
-     duplicá el bloque y cambiá la URL.
+     Las 30 imágenes se sirven desde este mismo repo a través del CDN de
+     jsDelivr, así que no hay que subirlas a GHL ni copiar URLs de a una:
+     alcanza con dejarlas en assets/social-proof/ con nombre 01 a 30.
 
-     Están puestas cuatro de ejemplo. Con 70 conviene generarlas de una vez
-     en vez de a mano: subí la carpeta a la Media Library de GHL, copiá las
-     URLs y pasámelas, o dejalas en el repo y las genero yo.
+     La extensión de la URL es .jpg, pero si el archivo real es .png o
+     .jpeg el script lo resuelve solo (ver "5. MOSAICO" abajo). Da igual
+     en qué formato estén.
 
-     Todas van con loading="lazy", así el navegador sólo descarga las que
-     entran en pantalla: con 70 capturas eso es la diferencia entre una
-     página que abre al instante y una que tarda.
+     Para añadir o quitar capturas, duplicá o borrá un <button class="shot">.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="section section--dark bleed">
   <div class="container">
@@ -1397,18 +1395,98 @@
     </div>
 
     <div class="shots" id="shots">
-        <button class="shot" type="button">
-          <img src="URL_CAPTURA_01.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
-        </button>
-        <button class="shot" type="button">
-          <img src="URL_CAPTURA_02.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
-        </button>
-        <button class="shot" type="button">
-          <img src="URL_CAPTURA_03.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
-        </button>
-        <button class="shot" type="button">
-          <img src="URL_CAPTURA_04.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
-        </button>
+
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/01.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/02.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/03.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/04.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/05.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/06.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/07.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/08.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/09.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/10.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/11.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/12.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/13.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/14.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/15.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/16.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/17.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/18.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/19.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/20.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/21.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/22.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/23.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/24.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/25.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/26.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/27.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/28.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/29.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+      <button class="shot" type="button">
+        <img src="https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/social-proof/30.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+      </button>
+
     </div>
   </div>
 </section>
@@ -1650,7 +1728,22 @@
     });
   });
 
-  /* ---------- 4. VISOR DE CAPTURAS ---------- */
+  /* ---------- 4. MOSAICO: tolerancia de extensión ----------
+     Las capturas salen de sitios distintos y vienen mezcladas en .jpg,
+     .png y .jpeg. En vez de exigir que se renombren todas, probamos las
+     tres. Así la carpeta se sube tal como está. */
+  document.querySelectorAll('#shots img').forEach(function (img) {
+    var exts = ['.jpg', '.png', '.jpeg'];
+    var i = 0;
+    img.addEventListener('error', function () {
+      if (i >= exts.length - 1) return;
+      var base = img.src.replace(/\.(jpg|png|jpeg)$/i, '');
+      i++;
+      img.src = base + exts[i];
+    });
+  });
+
+  /* ---------- 5. VISOR DE CAPTURAS ---------- */
   var box = document.getElementById('lightbox');
   var shots = document.getElementById('shots');
 
@@ -1679,7 +1772,7 @@
     });
   }
 
-  /* ---------- 5. UN SOLO VÍDEO SONANDO A LA VEZ ---------- */
+  /* ---------- 6. UN SOLO VÍDEO SONANDO A LA VEZ ---------- */
   var allVideos = Array.prototype.slice.call(document.querySelectorAll('video'));
   allVideos.forEach(function (v) {
     v.addEventListener('play', function () {
