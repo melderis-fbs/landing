@@ -68,13 +68,13 @@
 
   /* Full-bleed: que las secciones ocupen todo el ancho aunque GHL
      las meta dentro de un contenedor con max-width. */
+  /* Ojo: la versión con left/right + margin negativo rompe en el header,
+     porque en position:sticky left/right no desplazan, definen el anclaje.
+     Con márgenes calculados funciona igual en sticky y en estático. */
   .bleed{
-    position:relative;
-    left:50%;
-    right:50%;
-    margin-left:-50vw;
-    margin-right:-50vw;
     width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
   }
 
   /* ---------- COMPONENTES DE LA CASA ---------- */
@@ -142,7 +142,7 @@
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line-dark);
-    padding:16px 0;
+    padding:10px 0;
   }
   .header-inner{
     max-width:var(--maxw);
@@ -152,7 +152,16 @@
     justify-content:center;
     align-items:center;
   }
-  .logo img{height:42px;width:auto;display:block}
+  /* El logo lleva la flecha sobre la U, así que su caja incluye ese ascendente
+     y la palabra queda ópticamente baja aunque el archivo esté centrado.
+     El translateY la sube a su centro visual. Los dos números para ajustar
+     la barra son estos: la altura del logo y ese desplazamiento. */
+  .logo img{
+    height:38px;
+    width:auto;
+    display:block;
+    transform:translateY(-3px);
+  }
   /* Fallback tipográfico si todavía no cargaste el logo */
   .logo-word{color:#fff;font-weight:900;font-size:20px;letter-spacing:.01em}
   .logo-word span{color:var(--beige)}
