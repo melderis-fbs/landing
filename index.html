@@ -409,6 +409,7 @@
     position:absolute;
     inset:0 0 0 auto;
     width:52%;
+    height:100%;
     object-fit:cover;
     z-index:-1;
   }
@@ -570,6 +571,7 @@
   .cover--simple .cover-photo{
     inset:0;
     width:100%;
+    height:100%;
     z-index:0;
   }
   .cover--simple::after{
@@ -633,6 +635,28 @@
     color:var(--muted);
     font-weight:500;
   }
+
+  /* Enlace a la playlist completa, debajo del grid de casos */
+  .wins-more{
+    text-align:center;
+    margin-top:44px;
+  }
+  .wins-more a{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:transparent;
+    border:1px solid var(--beige-d);
+    border-radius:99px;
+    padding:14px 28px;
+    color:var(--black);
+    font-size:14px;
+    font-weight:700;
+    text-decoration:none;
+    transition:background .2s ease,color .2s ease;
+  }
+  .wins-more a:hover{background:var(--black);border-color:var(--black);color:#fff}
+  .wins-more a svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
 
   /* =====================================================================
      TESTIMONIOS EN TARJETA (captura + foto + estrellas)
@@ -1191,9 +1215,7 @@
       <p>Y son sólo los que tienen registro formal de antes y después. Hay más de 100 testimonios en el canal de YouTube.</p>
     </div>
 
-    <!-- Cada tarjeta usa la miniatura real del vídeo en YouTube. Las tarjetas
-         09 y 10 están comentadas hasta tener sus datos, así la página se puede
-         publicar sin huecos rotos. -->
+    <!-- Cada tarjeta usa la miniatura real del vídeo en YouTube. -->
     <div class="wins-grid" id="winsGrid">
 
       <article class="win-card">
@@ -1206,7 +1228,7 @@
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
+          <span class="win-niche">Coach de liderazgo</span>
           <h3>De 10.000 a 20.000 seguidores y un ticket que se triplicó</h3>
           <span>Vicky Blasevic</span>
         </div>
@@ -1222,7 +1244,7 @@
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
+          <span class="win-niche">Coaching</span>
           <h3>«Si no hago algo distinto, voy a seguir siempre igual»</h3>
           <span>Leila Farhi</span>
         </div>
@@ -1238,7 +1260,7 @@
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
+          <span class="win-niche">Profes de inglés</span>
           <h3>Tenían todos los miedos… y aun así lo hicieron</h3>
           <span>Marian y Vani</span>
         </div>
@@ -1254,7 +1276,7 @@
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
+          <span class="win-niche">Profe de inglés</span>
           <h3>«Soy excelente en lo que hago… pero no sabía cómo ganar plata con eso»</h3>
           <span>Florencia Soto</span>
         </div>
@@ -1270,7 +1292,7 @@
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
+          <span class="win-niche">Psicóloga</span>
           <h3>«No cambié lo que hacía, cambié la forma de sostenerlo»</h3>
           <span>Valentina Seita</span>
         </div>
@@ -1286,7 +1308,7 @@
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
+          <span class="win-niche">Medicina</span>
           <h3>Una médica que salió de lo tradicional y creó su programa online</h3>
           <span>Doctora Ailín Kaitzeff</span>
         </div>
@@ -1302,7 +1324,7 @@
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
+          <span class="win-niche">Coaching</span>
           <h3>De idea suelta a programa de alto valor vendido, en un nicho difícil</h3>
           <span>María Florencia Echellini</span>
         </div>
@@ -1318,48 +1340,52 @@
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
+          <span class="win-niche">Cantoterapia</span>
           <h3>De la inestabilidad a un negocio con dirección</h3>
           <span>Julieta Gil</span>
         </div>
       </article>
 
-      <!--
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_09">
+        <div class="win-media yt" data-yt="tY4DSPaBC9c">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de NOMBRE">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Mauro Acacio">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
-          <h3>«Frase corta».</h3>
-          <span>NOMBRE</span>
+          <span class="win-niche">Psicología</span>
+          <h3>De sesiones 1 a 1 a un programa premium</h3>
+          <span>Mauro Acacio</span>
         </div>
       </article>
-      -->
 
-      <!--
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_10">
+        <div class="win-media yt" data-yt="yJWpus1IUjg">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de NOMBRE">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Bárbara Lillo">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
         </div>
         <div class="win-body">
-          <span class="win-niche">NICHO</span>
-          <h3>«Frase corta».</h3>
-          <span>NOMBRE</span>
+          <span class="win-niche">Educación</span>
+          <h3>De profesora a empresaria</h3>
+          <span>Bárbara Lillo</span>
         </div>
       </article>
-      -->
 
+    </div>
+
+    <div class="wins-more">
+      <a href="https://youtube.com/playlist?list=PLK9ZgoLOpXDfCe-4QUGQKyDU_Ud5M18AO"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M21.6 7.2s-.2-1.5-.8-2.1c-.8-.8-1.6-.8-2-.9C15.9 4 12 4 12 4s-3.9 0-6.8.2c-.4.1-1.2.1-2 .9-.6.6-.8 2.1-.8 2.1S2.2 9 2.2 10.7v1.6C2.2 14 2.4 15.8 2.4 15.8s.2 1.5.8 2.1c.8.8 1.8.8 2.2.9 1.6.2 6.6.2 6.6.2s3.9 0 6.8-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2.1.8-2.1s.2-1.8.2-3.5v-1.6c0-1.7-.2-3.5-.2-3.5zM10 14.6V8.9l5.1 2.9-5.1 2.8z"/></svg>
+        Ver los +70 testimonios en YouTube
+      </a>
     </div>
   </div>
 </section>

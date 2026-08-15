@@ -122,18 +122,24 @@ Para no volver a perderlos, conviene renombrarlos con el número de la página d
 
 ## Testimonios · 10 vídeos de YouTube
 
-No hacen falta miniaturas. El grid está en 16:9, que es exactamente la proporción de la
-miniatura que genera YouTube, así que encaja sin recorte. Encima va una capa de marca en
-HTML: velo degradado, botón de play beige, nombre y profesión.
+Todos cargados. Cada tarjeta usa la miniatura real del vídeo en YouTube, así que las
+portadas que ya diseñaste se ven tal cual; encima sólo va el botón de play.
 
-Para cada uno hay que reemplazar tres cosas en `index.html`:
+| # | Nicho | Nombre | ID de YouTube |
+|---|---|---|---|
+| 01 | Coach de liderazgo | Vicky Blasevic | `Pdb153GrnfE` |
+| 02 | Coaching | Leila Farhi | `YL_cg_dEKWc` |
+| 03 | Profes de inglés | Marian y Vani | `T2hh6YfaHOQ` |
+| 04 | Profe de inglés | Florencia Soto | `-qliNBJZBUA` |
+| 05 | Psicóloga | Valentina Seita | `VRtkUPpknBY` |
+| 06 | Medicina | Doctora Ailín Kaitzeff | `GwFWcYdIiOk` |
+| 07 | Coaching | María Florencia Echellini | `OlZvixORYDM` |
+| 08 | Cantoterapia | Julieta Gil | `kvrsSxN0bhk` |
+| 09 | Psicología | Mauro Acacio | `tY4DSPaBC9c` |
+| 10 | Educación | Bárbara Lillo | `yJWpus1IUjg` |
 
-| Placeholder | Qué va |
-|---|---|
-| `ID_YOUTUBE_01..10` | Sólo el ID, lo que va después de `v=` o de `/shorts/` |
-| `NOMBRE 01..10` + `Profesión` | Van sobre la portada, abajo a la izquierda |
-| `«Frase corta que resuma su resultado.»` | Va debajo del vídeo |
+Debajo del grid hay un botón a la playlist completa:
+`youtube.com/playlist?list=PLK9ZgoLOpXDfCe-4QUGQKyDU_Ud5M18AO`
 
-Si algún testimonio fuera vertical, cambiá `aspect-ratio:16/9` por `9/16` en `.win-media`
-— es una línea. Pero en ese caso la miniatura de YouTube sí se recorta y conviene una
-portada propia en `data-poster`.
+Para añadir más, duplicá un bloque `<article class="win-card">` y cambiá `data-yt`,
+el nicho, el título y el nombre.
