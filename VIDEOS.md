@@ -120,10 +120,19 @@ Para no volver a perderlos, conviene renombrarlos con el número de la página d
 
 ---
 
-## Testimonios · 10 vídeos de YouTube
+## Testimonios · 9 vídeos de YouTube
 
 Todos cargados. Cada tarjeta usa la miniatura real del vídeo en YouTube, así que las
 portadas que ya diseñaste se ven tal cual; encima sólo va el botón de play.
+
+Nueve y no diez porque el grid es de tres columnas: con diez, la última quedaba sola.
+Si añadís más, conviene ir de tres en tres.
+
+**Miniaturas que no existen.** Si un vídeo no tiene `maxresdefault`, YouTube no devuelve
+un 404: devuelve un gris genérico de 120x90 con código 200. El script lo detecta midiendo
+el ancho de la imagen que llegó y baja a `sddefault` y después a `hqdefault`, que siempre
+existe. Si ves un recuadro gris con el icono de vídeo, es que ese vídeo no tiene portada
+en alta y conviene subirle una en YouTube.
 
 | # | Nicho | Nombre | ID de YouTube |
 |---|---|---|---|
@@ -136,7 +145,6 @@ portadas que ya diseñaste se ven tal cual; encima sólo va el botón de play.
 | 07 | Coaching | María Florencia Echellini | `OlZvixORYDM` |
 | 08 | Cantoterapia | Julieta Gil | `kvrsSxN0bhk` |
 | 09 | Psicología | Mauro Acacio | `tY4DSPaBC9c` |
-| 10 | Educación | Bárbara Lillo | `yJWpus1IUjg` |
 
 Debajo del grid hay un botón a la playlist completa:
 `youtube.com/playlist?list=PLK9ZgoLOpXDfCe-4QUGQKyDU_Ud5M18AO`

@@ -1371,21 +1371,6 @@
         </div>
       </article>
 
-      <article class="win-card">
-        <div class="win-media yt" data-yt="yJWpus1IUjg">
-          <div class="cover cover--simple">
-            <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Bárbara Lillo">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="win-body">
-          <span class="win-niche">Educación</span>
-          <h3>De profesora a empresaria</h3>
-          <span>Bárbara Lillo</span>
-        </div>
-      </article>
 
     </div>
 
@@ -1634,21 +1619,35 @@
     });
   });
 
-  /* Miniatura automática de YouTube cuando no hay portada propia */
+  /* Miniatura automática de YouTube cuando no hay portada propia.
+
+     Cuidado: si la calidad pedida no existe, YouTube NO devuelve un 404;
+     devuelve un gris genérico de 120x90 con HTTP 200. Por eso el evento
+     'error' no alcanza y hay que medir la imagen que llegó. */
+  var THUMBS = ['maxresdefault', 'sddefault', 'hqdefault'];
+
   document.querySelectorAll('.win-media.yt').forEach(function (media) {
     var img = media.querySelector('.cover-photo');
     if (!img) return;
+
     var custom = media.dataset.poster;
+    if (custom && custom.indexOf('URL_PORTADA') !== 0) { img.src = custom; return; }
+
     var id = media.dataset.yt;
-    if (custom && custom.indexOf('URL_PORTADA') !== 0) {
-      img.src = custom;
-    } else if (id && id.indexOf('ID_YOUTUBE') !== 0) {
-      img.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
-      // maxresdefault no existe en todos los vídeos: caemos a la que sí
-      img.addEventListener('error', function () {
-        img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
-      }, { once: true });
-    }
+    if (!id || id.indexOf('ID_YOUTUBE') === 0) return;
+
+    var step = 0;
+    var load = function () {
+      img.src = 'https://i.ytimg.com/vi/' + id + '/' + THUMBS[step] + '.jpg';
+    };
+    var next = function () {
+      if (step < THUMBS.length - 1) { step++; load(); }
+    };
+    img.addEventListener('load', function () {
+      if (img.naturalWidth > 0 && img.naturalWidth <= 120) next();
+    });
+    img.addEventListener('error', next);
+    load();
   });
 
   /* ---------- 3. BADGES "ACTIVÁ EL SONIDO" ---------- */
