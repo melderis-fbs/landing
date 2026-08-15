@@ -597,6 +597,41 @@
     width:64px;height:64px;
   }
   .cover--simple .cover-play svg{width:24px;height:24px}
+  /* Portada de respaldo: se activa sola cuando el vídeo no tiene una
+     miniatura decente en YouTube. Dibujada en HTML, sin imagen. */
+  .cover--brand{
+    background:
+      radial-gradient(circle at 78% 18%, rgba(196,180,154,.20) 0%, transparent 55%),
+      linear-gradient(150deg, #1F1D1A 0%, #141414 60%, #101010 100%);
+  }
+  .cover--brand::after{background:none}
+  .cover--brand .cover-photo{display:none}
+  .cover-fallback{
+    position:absolute;
+    inset:auto 0 0 0;
+    z-index:2;
+    padding:0 18px 16px;
+    text-align:left;
+    pointer-events:none;
+  }
+  .cover-fallback span{
+    display:block;
+    font-size:9.5px;
+    font-weight:800;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--beige);
+    margin-bottom:6px;
+  }
+  .win-card--brand .win-body span{display:none}
+  .cover-fallback p{
+    font-size:17px;
+    font-weight:700;
+    line-height:1.25;
+    letter-spacing:-.01em;
+    color:#fff;
+  }
+
   .cover-caption{
     position:absolute;
     left:0;right:0;bottom:0;
@@ -668,109 +703,64 @@
   .wins-more a svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
 
   /* =====================================================================
-     TESTIMONIOS EN TARJETA (captura + foto + estrellas)
+     MOSAICO DE CAPTURAS (social proof)
+     Columnas CSS: cada captura conserva su alto real y el mosaico se acomoda
+     solo, sin recortes ni cajas de alto fijo.
      ===================================================================== */
-  .quotes-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:28px;
+  .shots{
+    column-count:4;
+    column-gap:14px;
   }
-  .quote-card{
-    position:relative;
+  .shot{
+    break-inside:avoid;
+    margin:0 0 14px;
+    border-radius:12px;
+    overflow:hidden;
     background:var(--carbon);
-    border-radius:18px;
-    padding:34px 30px;
-    overflow:hidden;
+    border:1px solid var(--line-dark);
+    cursor:zoom-in;
+    display:block;
+    width:100%;
+    transition:border-color .2s ease,transform .2s ease;
   }
-  /* Marco fino beige por dentro */
-  .quote-card::before{
-    content:'';
-    position:absolute;
-    inset:12px;
-    border:1px solid rgba(196,180,154,.45);
-    border-radius:10px;
-    pointer-events:none;
-  }
-  /* Comillas grandes en outline: apertura arriba-izq, cierre abajo-der */
-  .quote-card::after,
-  .quote-inner::after{
-    position:absolute;
-    font-size:112px;
-    line-height:.78;
-    font-weight:800;
-    color:transparent;
-    -webkit-text-stroke:2px rgba(196,180,154,.55);
-    pointer-events:none;
-  }
-  .quote-card::after{
-    content:'\201C';
-    top:14px;left:22px;
-    z-index:2;
-  }
-  .quote-inner::after{
-    content:'\201D';
-    left:38px;bottom:-32px;
-    z-index:4;
-  }
-  .quote-inner{
-    position:relative;
-    z-index:3;
-    display:flex;
+  .shot:hover{border-color:var(--beige);transform:translateY(-2px)}
+  .shot img{width:100%;height:auto;display:block}
+
+  /* Visor a pantalla completa */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:rgba(10,10,10,.94);
+    display:none;
     align-items:center;
-    gap:26px;
+    justify-content:center;
+    padding:32px;
+    cursor:zoom-out;
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
   }
-  .quote-shot{
-    flex:1;
-    min-width:0;
-    background:#fff;
+  .lightbox.open{display:flex}
+  .lightbox img{
+    max-width:100%;
+    max-height:100%;
     border-radius:10px;
-    overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
   }
-  .quote-shot img{width:100%;height:auto;display:block}
-  /* Alternativa sin captura: cita en texto */
-  .quote-text{
-    flex:1;
-    min-width:0;
-    background:var(--paper);
-    color:var(--ink);
-    border-radius:10px;
-    /* el padding inferior deja sitio a la comilla de cierre */
-    padding:20px 22px 54px;
-    font-size:14.5px;
-    line-height:1.6;
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
-  }
-  .quote-person{
-    flex-shrink:0;
-    width:170px;
-    text-align:center;
-  }
-  .quote-person img{
-    width:112px;height:112px;
+  .lightbox-close{
+    position:absolute;
+    top:20px;right:24px;
+    width:42px;height:42px;
     border-radius:50%;
-    object-fit:cover;
-    display:block;
-    margin:0 auto 14px;
-    border:2px solid rgba(196,180,154,.5);
-    background:var(--carbon-2);
-  }
-  .quote-person strong{
-    display:block;
+    border:1px solid var(--line-dark);
+    background:rgba(17,17,17,.8);
     color:#fff;
-    font-size:15px;
-    font-weight:700;
-    letter-spacing:-.01em;
-    margin-bottom:6px;
+    font-size:22px;
+    line-height:1;
+    cursor:pointer;
+    font-family:inherit;
   }
-  .quote-person small{
-    display:block;
-    color:var(--soft);
-    font-size:11.5px;
-    font-weight:500;
-    margin-bottom:8px;
-  }
-  .stars{color:var(--beige);font-size:16px;letter-spacing:2px}
+  .lightbox-close:hover{background:var(--beige);color:var(--black);border-color:var(--beige)}
 
   /* =====================================================================
      CTA FINAL
@@ -851,8 +841,7 @@
      ===================================================================== */
   @media (max-width:900px){
     .wins-grid{grid-template-columns:repeat(2,1fr)}
-    .quote-inner{flex-direction:column;gap:22px}
-    .quote-person{width:100%}
+    .shots{column-count:3}
   }
   @media (max-width:768px){
     .hero{padding:52px 0 46px}
@@ -865,7 +854,7 @@
     .cover-photo{width:46%}
     .cover-play{width:44px;height:44px;right:16px;bottom:14px}
     .cover-play svg{width:17px;height:17px}
-    .quotes-grid{grid-template-columns:1fr;gap:22px}
+    .shots{column-count:2}
     .play-btn{width:68px;height:68px}
     .play-btn svg{width:28px;height:28px}
     .overlay-text{font-size:10px;letter-spacing:.18em;padding:9px 16px}
@@ -876,8 +865,7 @@
   }
   @media (max-width:560px){
     .wins-grid{grid-template-columns:1fr;gap:20px}
-    .quote-card{padding:28px 20px}
-    .quote-card::after{font-size:100px;left:14px}
+    .shots{column-count:1}
   }
 </style>
 </head>
@@ -1385,10 +1373,19 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     TESTIMONIOS EN TARJETA (captura de WhatsApp/Instagram + persona)
-     Cada tarjeta admite dos formatos:
-       A) .quote-shot  → captura de pantalla real (recomendado)
-       B) .quote-text  → cita escrita, con <mark> para resaltar en beige
+     MOSAICO DE CAPTURAS · SOCIAL PROOF
+
+     Cada captura es un <button class="shot"> con su <img> adentro. No lleva
+     ningún dato más: ni nombre, ni estrellas, ni texto. Para añadir una,
+     duplicá el bloque y cambiá la URL.
+
+     Están puestas cuatro de ejemplo. Con 70 conviene generarlas de una vez
+     en vez de a mano: subí la carpeta a la Media Library de GHL, copiá las
+     URLs y pasámelas, o dejalas en el repo y las genero yo.
+
+     Todas van con loading="lazy", así el navegador sólo descarga las que
+     entran en pantalla: con 70 capturas eso es la diferencia entre una
+     página que abre al instante y una que tarda.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="section section--dark bleed">
   <div class="container">
@@ -1396,76 +1393,31 @@
     <div class="section-head">
       <span class="kicker">La prueba</span>
       <h2>Está en <span class="hl">sus palabras</span></h2>
-      <p>Mensajes reales de clientes que ya están viviendo el cambio.</p>
+      <p>Mensajes reales de clientes. Tocá cualquiera para verlo grande.</p>
     </div>
 
-    <div class="quotes-grid">
-
-      <!-- Formato A: captura de pantalla -->
-      <article class="quote-card">
-        <div class="quote-inner">
-          <div class="quote-shot">
-            <img src="URL_CAPTURA_TESTIMONIO_01.jpg" alt="Testimonio" loading="lazy">
-          </div>
-          <div class="quote-person">
-            <img src="URL_FOTO_PERSONA_01.jpg" alt="" loading="lazy">
-            <strong>Nombre Apellido</strong>
-            <small>Cliente Founders</small>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="quote-card">
-        <div class="quote-inner">
-          <div class="quote-shot">
-            <img src="URL_CAPTURA_TESTIMONIO_02.jpg" alt="Testimonio" loading="lazy">
-          </div>
-          <div class="quote-person">
-            <img src="URL_FOTO_PERSONA_02.jpg" alt="" loading="lazy">
-            <strong>Nombre Apellido</strong>
-            <small>Cliente Founders</small>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Formato B: cita escrita con resaltado beige -->
-      <article class="quote-card">
-        <div class="quote-inner">
-          <div class="quote-text">
-            Lo que más valoro del programa fue el cambio de mentalidad, tener un
-            <mark>acompañamiento muy cercano todo el tiempo y un paso a paso bien ordenado</mark>.
-            Al final eso te da tranquilidad y la sensación de que hay un norte.
-          </div>
-          <div class="quote-person">
-            <img src="URL_FOTO_PERSONA_03.jpg" alt="" loading="lazy">
-            <strong>Nombre Apellido</strong>
-            <small>Cliente Founders</small>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="quote-card">
-        <div class="quote-inner">
-          <div class="quote-text">
-            Muchísimas gracias. Es <mark>por el programa que hoy he podido ayudar en los últimos
-            5 meses a más de 250 personas</mark>. En verdad estoy haciendo el cambio, pero esto no
-            sería posible sin la mentalidad, el orden y el sistema.
-          </div>
-          <div class="quote-person">
-            <img src="URL_FOTO_PERSONA_04.jpg" alt="" loading="lazy">
-            <strong>Nombre Apellido</strong>
-            <small>Cliente Founders</small>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </article>
-
+    <div class="shots" id="shots">
+        <button class="shot" type="button">
+          <img src="URL_CAPTURA_01.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        </button>
+        <button class="shot" type="button">
+          <img src="URL_CAPTURA_02.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        </button>
+        <button class="shot" type="button">
+          <img src="URL_CAPTURA_03.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        </button>
+        <button class="shot" type="button">
+          <img src="URL_CAPTURA_04.jpg" alt="Mensaje de un cliente de Founders" loading="lazy" decoding="async">
+        </button>
     </div>
   </div>
 </section>
+
+<!-- Visor de capturas -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" type="button" aria-label="Cerrar">&times;</button>
+  <img src="" alt="">
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      CTA FINAL + CHECKLIST
@@ -1636,12 +1588,35 @@
     var id = media.dataset.yt;
     if (!id || id.indexOf('ID_YOUTUBE') === 0) return;
 
+    var cover = media.querySelector('.cover');
+    var card  = media.parentElement;
+
+    // Sin portada usable en YouTube dibujamos una de marca con el propio
+    // texto de la tarjeta. Mejor eso que una miniatura borrosa o un gris.
+    var brandCover = function () {
+      if (!cover || cover.querySelector('.cover-fallback')) return;
+      var nicho  = card.querySelector('.win-niche');
+      var nombre = card.querySelector('.win-body span');
+      var box = document.createElement('div');
+      box.className = 'cover-fallback';
+      var a = document.createElement('span');
+      a.textContent = nicho ? nicho.textContent : 'Caso real';
+      var b = document.createElement('p');
+      // El nombre, no el título: el título ya está debajo del vídeo y
+      // repetirlo dos veces en la misma tarjeta se lee como un error.
+      b.textContent = nombre ? nombre.textContent : '';
+      box.appendChild(a); box.appendChild(b);
+      cover.appendChild(box);
+      cover.classList.add('cover--brand');
+      card.classList.add('win-card--brand');
+    };
+
     var step = 0;
     var load = function () {
       img.src = 'https://i.ytimg.com/vi/' + id + '/' + THUMBS[step] + '.jpg';
     };
     var next = function () {
-      if (step < THUMBS.length - 1) { step++; load(); }
+      if (step < THUMBS.length - 1) { step++; load(); } else { brandCover(); }
     };
     img.addEventListener('load', function () {
       if (img.naturalWidth > 0 && img.naturalWidth <= 120) next();
@@ -1675,7 +1650,36 @@
     });
   });
 
-  /* ---------- 4. UN SOLO VÍDEO SONANDO A LA VEZ ---------- */
+  /* ---------- 4. VISOR DE CAPTURAS ---------- */
+  var box = document.getElementById('lightbox');
+  var shots = document.getElementById('shots');
+
+  if (box && shots) {
+    var full = box.querySelector('img');
+    var close = function () {
+      box.classList.remove('open');
+      full.src = '';
+      document.body.style.overflow = '';
+    };
+
+    shots.addEventListener('click', function (e) {
+      var btn = e.target.closest('.shot');
+      if (!btn) return;
+      var img = btn.querySelector('img');
+      if (!img) return;
+      full.src = img.currentSrc || img.src;
+      full.alt = img.alt || '';
+      box.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && box.classList.contains('open')) close();
+    });
+  }
+
+  /* ---------- 5. UN SOLO VÍDEO SONANDO A LA VEZ ---------- */
   var allVideos = Array.prototype.slice.call(document.querySelectorAll('video'));
   allVideos.forEach(function (v) {
     v.addEventListener('play', function () {
