@@ -247,9 +247,10 @@
     overflow:hidden;
     cursor:pointer;
   }
-  .player-media video{
+  .player-media video,.player-media iframe{
     width:100%;height:100%;
     display:block;
+    border:0;
     object-fit:cover;
   }
   /* En pantalla completa el vídeo se ve entero, no recortado */
@@ -300,34 +301,6 @@
     text-shadow:0 1px 6px rgba(0,0,0,.6);
   }
   .overlay-text svg{width:17px;height:17px;fill:var(--beige);flex-shrink:0}
-
-  .speed-bar{
-    display:flex;align-items:center;justify-content:space-between;
-    gap:12px;
-    padding:12px 18px;
-    background:var(--carbon-2);
-    border-top:1px solid var(--line-dark);
-    flex-wrap:wrap;
-  }
-  .speed-label{
-    font-size:10px;font-weight:700;
-    letter-spacing:.22em;text-transform:uppercase;
-    color:var(--soft);
-  }
-  .speed-buttons{display:flex;gap:6px;flex-wrap:wrap}
-  .speed-btn{
-    background:transparent;
-    border:1px solid var(--line-dark);
-    color:#CFCFCF;
-    padding:6px 13px;
-    font-family:inherit;
-    font-size:12px;font-weight:700;
-    cursor:pointer;
-    border-radius:99px;
-    transition:all .18s ease;
-  }
-  .speed-btn:hover{border-color:var(--beige);color:#fff}
-  .speed-btn.active{background:var(--beige);border-color:var(--beige);color:var(--black)}
 
   /* =====================================================================
      MARQUEE
@@ -902,29 +875,12 @@
       vamos a hacer en la sesión.
     </p>
 
-    <!-- REEMPLAZAR: la duración real del vídeo de bienvenida -->
-    <p class="hero-note">
-      <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-      Son X minutos
-    </p>
-
     <!-- ─────────────────────────────────────────────────────────────────
-         VÍDEO DE BIENVENIDA — pendiente de grabar.
-         Los 7 vídeos pre-llamada van todos en el grid de abajo, así que
-         este hueco pide uno corto (60-90 s) de bienvenida: "gracias por
-         agendar, mirá estos 7 vídeos antes de la sesión y llegá con las
-         preguntas anotadas".
-         Si preferís no grabarlo, borrá el <div class="player"> entero:
-         la página arranca directo en el grid y no queda ningún hueco.
+         VÍDEO DE BIENVENIDA (Loom). El reproductor de Loom se carga recién
+         al hacer click sobre la portada, así la página abre rápido.
          ───────────────────────────────────────────────────────────────── -->
     <div class="player">
-      <div class="player-media" id="heroMedia">
-        <video id="heroVideo" playsinline muted preload="metadata"
-               poster="URL_POSTER_VIDEO_PRINCIPAL.jpg">
-          <source src="URL_VIDEO_PRINCIPAL.mp4" type="video/mp4">
-          Tu navegador no soporta vídeo HTML5.
-        </video>
-
+      <div class="player-media" data-loom="2e26b0b914944987aa2770d0cf3af3f2">
         <div class="player-overlay" id="heroOverlay">
           <div class="play-btn">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -933,17 +889,6 @@
             <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
             Hacé click para escuchar
           </div>
-        </div>
-      </div>
-
-      <div class="speed-bar">
-        <span class="speed-label">Velocidad</span>
-        <div class="speed-buttons" id="speedButtons">
-          <button class="speed-btn active" data-speed="1">1x</button>
-          <button class="speed-btn" data-speed="1.25">1.25x</button>
-          <button class="speed-btn" data-speed="1.5">1.5x</button>
-          <button class="speed-btn" data-speed="1.75">1.75x</button>
-          <button class="speed-btn" data-speed="2">2x</button>
         </div>
       </div>
     </div>
@@ -1014,7 +959,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media">
+        <div class="qa-media" data-loom="2343363fe0f84add8d66d9ea8bdb2de1">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1029,7 +974,6 @@
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
-          <video preload="none" playsinline src="URL_VIDEO_01.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
@@ -1043,7 +987,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media">
+        <div class="qa-media" data-loom="ce887e26bf134940b9009b4db30981ee">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1058,7 +1002,6 @@
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
-          <video preload="none" playsinline src="URL_VIDEO_02.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
@@ -1072,7 +1015,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media">
+        <div class="qa-media" data-loom="f295615ad1ad4a5893cbc9787a39f691">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1087,7 +1030,6 @@
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
-          <video preload="none" playsinline src="URL_VIDEO_03.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
@@ -1101,7 +1043,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media">
+        <div class="qa-media" data-loom="7129cf1c49e44b99ad81531705a1dbc2">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1116,7 +1058,6 @@
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
-          <video preload="none" playsinline src="URL_VIDEO_04.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
@@ -1130,7 +1071,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media">
+        <div class="qa-media" data-loom="3b3fb2c0aa03491f8c489a6239cbeaee">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1145,7 +1086,6 @@
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
-          <video preload="none" playsinline src="URL_VIDEO_05.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
@@ -1159,7 +1099,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media">
+        <div class="qa-media" data-loom="d7b8d7db244a4c128f8d17d8333fa455">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1174,7 +1114,6 @@
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
-          <video preload="none" playsinline src="URL_VIDEO_06.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
@@ -1188,7 +1127,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media">
+        <div class="qa-media" data-loom="a772db6d39cb4a44a7b4ff93f3a98e7b">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1203,7 +1142,6 @@
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
-          <video preload="none" playsinline src="URL_VIDEO_07.mp4"></video>
         </div>
         <div class="qa-body">
           <span class="qa-tag">Vídeo pre-llamada</span>
@@ -1494,39 +1432,49 @@
 (function () {
   'use strict';
 
-  /* ---------- 1. VÍDEO PRINCIPAL: overlay + sonido + velocidad ---------- */
-  var heroVideo   = document.getElementById('heroVideo');
+  /* ---------- 1. VÍDEO DE BIENVENIDA ---------- */
+  /* Puede ser una fachada de Loom/YouTube o un <video> propio: el mismo
+     overlay de marca sirve para los dos casos. */
   var heroOverlay = document.getElementById('heroOverlay');
-  var speedBox    = document.getElementById('speedButtons');
+  var heroMedia   = heroOverlay ? heroOverlay.parentElement : null;
 
-  if (heroVideo && heroOverlay) {
-    // Si no hay poster, mostramos un fotograma en vez de un rectángulo negro.
-    var seekToFrame = function () {
-      try {
-        if (heroVideo.duration && heroVideo.duration > 0.5) heroVideo.currentTime = 0.5;
-      } catch (e) {}
-    };
-    if (heroVideo.readyState >= 1) seekToFrame();
-    else heroVideo.addEventListener('loadedmetadata', seekToFrame, { once: true });
+  if (heroOverlay && heroMedia) {
+    var heroVideo = heroMedia.querySelector('video');
+
+    // Vídeo propio sin poster: mostramos un fotograma en vez de un rectángulo negro.
+    if (heroVideo) {
+      var seekToFrame = function () {
+        try {
+          if (heroVideo.duration && heroVideo.duration > 0.5) heroVideo.currentTime = 0.5;
+        } catch (e) {}
+      };
+      if (heroVideo.readyState >= 1) seekToFrame();
+      else heroVideo.addEventListener('loadedmetadata', seekToFrame, { once: true });
+    }
 
     heroOverlay.addEventListener('click', function (e) {
       e.stopPropagation();
+
+      var loom = heroMedia.dataset.loom;
+      if (loom) {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.loom.com/embed/' + loom +
+                     '?autoplay=1&hideEmbedTopBar=true&hide_owner=true&hide_share=true&hide_title=true';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.title = 'Vídeo de bienvenida';
+        heroMedia.appendChild(iframe);
+        heroOverlay.remove();
+        return;
+      }
+
+      if (!heroVideo) return;
       heroVideo.muted = false;
       heroVideo.currentTime = 0;
       heroVideo.controls = true;
-      var p = heroVideo.play();
-      if (p !== undefined) p.catch(function () { /* autoplay bloqueado: al menos quitamos el overlay */ });
+      var pl = heroVideo.play();
+      if (pl !== undefined) pl.catch(function () {});
       heroOverlay.classList.add('hidden');
-    });
-  }
-
-  if (speedBox && heroVideo) {
-    speedBox.addEventListener('click', function (e) {
-      var btn = e.target.closest('.speed-btn');
-      if (!btn) return;
-      heroVideo.playbackRate = parseFloat(btn.dataset.speed);
-      speedBox.querySelectorAll('.speed-btn').forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
     });
   }
 

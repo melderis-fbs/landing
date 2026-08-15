@@ -13,7 +13,7 @@ El orden de la columna "Nº en la página" es el que aparece en `index.html`.
 - **Cómo lo reconocés:** la marca de ropa Bechi, la nota de Infobae, marzo de 2020, "tenía 24 años",
   y el bloque final de "Founders es para vos si… / Founders no es para vos si…"
 - **Orden en que me lo mandaste:** 5º
-- **URL:** `_______________________`
+- **Loom:** `2343363fe0f84add8d66d9ea8bdb2de1` — ya aplicado en `index.html`
 
 ## 02 · ¿Qué resultados consiguen, y cómo?
 
@@ -23,7 +23,7 @@ El orden de la columna "Nº en la página" es el que aparece en `index.html`.
 - **Cómo lo reconocés:** los nombres Fer, Jessica, Trin, Pilar y Mauro, y la explicación de
   ROD (demanda orgánica reprimida) y APM (autoridad de posicionamiento en el mercado)
 - **Orden en que me lo mandaste:** 6º
-- **URL:** `_______________________`
+- **Loom:** `ce887e26bf134940b9009b4db30981ee` — ya aplicado en `index.html`
 
 ## 03 · Un caso real, de principio a fin
 
@@ -33,7 +33,7 @@ El orden de la columna "Nº en la página" es el que aparece en `index.html`.
 - **Cómo lo reconocés:** es el único con dos personas en cámara. Alex es profesora de inglés y
   coach de comunicación. Aparecen las tres preguntas que le hacés a todo el que llega
 - **Orden en que me lo mandaste:** 2º
-- **URL:** `_______________________`
+- **Loom:** `f295615ad1ad4a5893cbc9787a39f691` — ya aplicado en `index.html`
 
 ## 04 · ¿Y si no tengo tiempo para esto?
 
@@ -43,7 +43,7 @@ El orden de la columna "Nº en la página" es el que aparece en `index.html`.
 - **Cómo lo reconocés:** la nutricionista con lista de espera de tres meses, las 4 o 5 horas
   semanales que podía dedicarle, y las 15 horas semanales que el sistema le liberó
 - **Orden en que me lo mandaste:** 1º
-- **URL:** `_______________________`
+- **Loom:** `7129cf1c49e44b99ad81531705a1dbc2` — ya aplicado en `index.html`
 
 ## 05 · Ya invertí antes y no me funcionó
 
@@ -53,7 +53,7 @@ El orden de la columna "Nº en la página" es el que aparece en `index.html`.
 - **Cómo lo reconocés:** las cuatro categorías de por qué falló lo anterior (programa genérico,
   acompañamiento escaso, timing incorrecto, no ejecutaste) y **la garantía de los 4 meses**
 - **Orden en que me lo mandaste:** 3º
-- **URL:** `_______________________`
+- **Loom:** `3b3fb2c0aa03491f8c489a6239cbeaee` — ya aplicado en `index.html`
 
 ## 06 · ¿No me conviene contratar una agencia?
 
@@ -64,7 +64,7 @@ El orden de la columna "Nº en la página" es el que aparece en `index.html`.
   6 meses de agencia, y la imagen de "poner altavoces en una canción que todavía no terminaste
   de escribir"
 - **Orden en que me lo mandaste:** 4º
-- **URL:** `_______________________`
+- **Loom:** `d7b8d7db244a4c128f8d17d8333fa455` — ya aplicado en `index.html`
 
 ## 07 · ¿Esto va a ser una llamada de venta?
 
@@ -75,17 +75,16 @@ El orden de la columna "Nº en la página" es el que aparece en `index.html`.
   la falsa urgencia, y cierra con «si la primera conversación no te dejó algo valioso,
   fallamos nosotros como empresa, no vos»
 - **Orden en que me lo mandaste:** 7º
-- **URL:** `_______________________`
+- **Loom:** `a772db6d39cb4a44a7b4ff93f3a98e7b` — ya aplicado en `index.html`
 
 ---
 
 ## Hero · vídeo de bienvenida
 
-Pendiente de grabar. 60–90 s: gracias por agendar, mirá estos siete vídeos antes de la sesión,
-anotá tus dudas. Si no se graba, se borra el `<div class="player">` del hero y la página
-arranca directo en el grid.
+Grabado y colgado. El hero también es una fachada: el reproductor de Loom se carga al hacer
+click sobre el overlay "hacé click para escuchar".
 
-- **URL:** `_______________________`
+- **Loom:** `2e26b0b914944987aa2770d0cf3af3f2` — ya aplicado en `index.html`
 
 ---
 
