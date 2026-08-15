@@ -576,7 +576,7 @@
     content:'';
     position:absolute;
     inset:0;
-    background:linear-gradient(180deg,rgba(17,17,17,.15) 0%,rgba(17,17,17,.05) 40%,rgba(17,17,17,.85) 100%);
+    background:radial-gradient(circle at 50% 50%, rgba(17,17,17,.35) 0%, rgba(17,17,17,.12) 45%, rgba(17,17,17,0) 70%);
     z-index:1;
   }
   .cover--simple .cover-play{
@@ -611,6 +611,15 @@
   .win-body{
     padding:16px 18px;
     border-top:1px solid var(--border2);
+  }
+  .win-niche{
+    display:block;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--beige-d);
+    margin-bottom:7px;
   }
   .win-body h3{
     font-size:15px;font-weight:700;
@@ -1182,197 +1191,174 @@
       <p>Y son sólo los que tienen registro formal de antes y después. Hay más de 100 testimonios en el canal de YouTube.</p>
     </div>
 
+    <!-- Cada tarjeta usa la miniatura real del vídeo en YouTube. Las tarjetas
+         09 y 10 están comentadas hasta tener sus datos, así la página se puede
+         publicar sin huecos rotos. -->
     <div class="wins-grid" id="winsGrid">
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_01">
+        <div class="win-media yt" data-yt="Pdb153GrnfE">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 01">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Vicky Blasevic">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 01
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>De 10.000 a 20.000 seguidores y un ticket que se triplicó</h3>
+          <span>Vicky Blasevic</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_02">
+        <div class="win-media yt" data-yt="YL_cg_dEKWc">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 02">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Leila Farhi">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 02
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>«Si no hago algo distinto, voy a seguir siempre igual»</h3>
+          <span>Leila Farhi</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_03">
+        <div class="win-media yt" data-yt="T2hh6YfaHOQ">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 03">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Marian y Vani">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 03
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>Tenían todos los miedos… y aun así lo hicieron</h3>
+          <span>Marian y Vani</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_04">
+        <div class="win-media yt" data-yt="-qliNBJZBUA">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 04">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Florencia Soto">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 04
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>«Soy excelente en lo que hago… pero no sabía cómo ganar plata con eso»</h3>
+          <span>Florencia Soto</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_05">
+        <div class="win-media yt" data-yt="VRtkUPpknBY">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 05">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Valentina Seita">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 05
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>«No cambié lo que hacía, cambié la forma de sostenerlo»</h3>
+          <span>Valentina Seita</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_06">
+        <div class="win-media yt" data-yt="GwFWcYdIiOk">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 06">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Doctora Ailín Kaitzeff">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 06
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>Una médica que salió de lo tradicional y creó su programa online</h3>
+          <span>Doctora Ailín Kaitzeff</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_07">
+        <div class="win-media yt" data-yt="OlZvixORYDM">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 07">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de María Florencia Echellini">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 07
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>De idea suelta a programa de alto valor vendido, en un nicho difícil</h3>
+          <span>María Florencia Echellini</span>
         </div>
       </article>
 
       <article class="win-card">
-        <div class="win-media yt" data-yt="ID_YOUTUBE_08">
+        <div class="win-media yt" data-yt="kvrsSxN0bhk">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 08">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de Julieta Gil">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 08
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>De la inestabilidad a un negocio con dirección</h3>
+          <span>Julieta Gil</span>
         </div>
       </article>
 
+      <!--
       <article class="win-card">
         <div class="win-media yt" data-yt="ID_YOUTUBE_09">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 09">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de NOMBRE">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 09
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>«Frase corta».</h3>
+          <span>NOMBRE</span>
         </div>
       </article>
+      -->
 
+      <!--
       <article class="win-card">
         <div class="win-media yt" data-yt="ID_YOUTUBE_10">
           <div class="cover cover--simple">
             <img class="cover-photo" alt="" loading="lazy">
-            <button class="cover-play" type="button" aria-label="Reproducir testimonio 10">
+            <button class="cover-play" type="button" aria-label="Reproducir el testimonio de NOMBRE">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <span class="cover-caption">
-              NOMBRE 10
-              <small>Profesión</small>
-            </span>
           </div>
         </div>
         <div class="win-body">
-          <h3>«Frase corta que resuma su resultado.»</h3>
-          <span>Cliente Founders</span>
+          <span class="win-niche">NICHO</span>
+          <h3>«Frase corta».</h3>
+          <span>NOMBRE</span>
         </div>
       </article>
+      -->
 
     </div>
   </div>
