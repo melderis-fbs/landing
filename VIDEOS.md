@@ -81,8 +81,13 @@ El orden de la columna "Nº en la página" es el que aparece en `index.html`.
 
 ## Hero · vídeo de bienvenida
 
-Grabado y colgado. El hero también es una fachada: el reproductor de Loom se carga al hacer
-click sobre el overlay "hacé click para escuchar".
+Grabado y colgado. El hero es una fachada: el reproductor de Loom se carga al hacer click
+sobre la portada.
+
+La portada está dibujada en CSS (degradado oscuro con brillo beige, filete interior, logo,
+botón de play y la línea "hacé click para ver el vídeo"). No es una imagen, así que no hay
+nada que subir ni que rehacer si cambia el logo. Antes se veía un rectángulo negro mientras
+Loom no había cargado.
 
 - **Loom:** `2e26b0b914944987aa2770d0cf3af3f2` — ya aplicado en `index.html`
 

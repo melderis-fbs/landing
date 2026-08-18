@@ -235,12 +235,28 @@
     overflow:hidden;
     box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(196,180,154,.06);
   }
+  /* La portada del vídeo de bienvenida está dibujada en CSS: hasta que el
+     visitante hace click, Loom no ha cargado nada, y un rectángulo negro
+     no dice nada. Esto pone la marca en el primer segundo. */
   .player-media{
     position:relative;
     aspect-ratio:16/9;
-    background:#000;
     overflow:hidden;
     cursor:pointer;
+    background:
+      radial-gradient(circle at 50% 34%, rgba(196,180,154,.20) 0%, transparent 58%),
+      radial-gradient(circle at 88% 96%, rgba(168,148,111,.14) 0%, transparent 46%),
+      linear-gradient(158deg, #24211C 0%, #191919 46%, #101010 100%);
+  }
+  /* Filete beige interior, el mismo recurso de las tarjetas de testimonio */
+  .player-media::before{
+    content:'';
+    position:absolute;
+    inset:14px;
+    border:1px solid rgba(196,180,154,.22);
+    border-radius:10px;
+    pointer-events:none;
+    z-index:1;
   }
   .player-media video,.player-media iframe{
     width:100%;height:100%;
@@ -256,16 +272,23 @@
   .player-overlay{
     position:absolute;
     inset:0;
-    background:rgba(17,17,17,.55);
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:20px;
+    gap:24px;
     cursor:pointer;
     transition:opacity .3s ease;
     z-index:5;
   }
+  /* El logo, arriba del botón de play */
+  .player-logo img{
+    height:52px;
+    width:auto;
+    display:block;
+    opacity:.95;
+  }
+  .player-logo{margin-bottom:2px}
   .player-overlay.hidden{opacity:0;pointer-events:none}
   .play-btn{
     width:86px;height:86px;
@@ -885,7 +908,13 @@
     .shots{column-count:2}
     .play-btn{width:68px;height:68px}
     .play-btn svg{width:28px;height:28px}
-    .overlay-text{font-size:10px;letter-spacing:.18em;padding:9px 16px}
+    .overlay-text{font-size:10px;letter-spacing:.18em;padding:8px 14px}
+    /* En 16:9 sobre 342 px de ancho el alto es 192: el stack logo + play +
+       texto tiene que caber ahí sin tocar el filete. */
+    .player-overlay{gap:13px}
+    .player-logo img{height:28px}
+    .player-logo{margin-bottom:0}
+    .player-media::before{inset:9px}
     .logo img{height:34px}
     .marquee-item{font-size:10.5px;letter-spacing:.18em;padding:0 18px}
     .marquee-item::after{margin-left:18px}
@@ -938,6 +967,10 @@
     <div class="player">
       <div class="player-media" data-loom="2e26b0b914944987aa2770d0cf3af3f2">
         <div class="player-overlay" id="heroOverlay">
+          <div class="player-logo">
+            <img src="https://assets.cdn.filesafe.space/x7nYndpXUc1dmpunATsZ/media/6a17c189ff82912d6577718d.png"
+                 alt="Founders">
+          </div>
           <div class="play-btn">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
