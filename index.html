@@ -289,6 +289,17 @@
     opacity:.95;
   }
   .player-logo{margin-bottom:2px}
+  /* Si el logo no carga (CDN caído, ruta cambiada), queda la palabra en su
+     lugar en vez de un hueco. El script cambia de uno a otro. */
+  .player-logo-txt{
+    display:none;
+    color:#fff;
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:.02em;
+  }
+  .player-logo--txt img{display:none}
+  .player-logo--txt .player-logo-txt{display:block}
   .player-overlay.hidden{opacity:0;pointer-events:none}
   .play-btn{
     width:86px;height:86px;
@@ -970,6 +981,7 @@
           <div class="player-logo">
             <img src="https://assets.cdn.filesafe.space/x7nYndpXUc1dmpunATsZ/media/6a17c189ff82912d6577718d.png"
                  alt="Founders">
+            <span class="player-logo-txt">FOUNDERS</span>
           </div>
           <div class="play-btn">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1717,6 +1729,17 @@
       if (pl !== undefined) pl.catch(function () {});
       heroOverlay.classList.add('hidden');
     });
+  }
+
+  /* Si el logo de la portada no carga, mostramos la palabra */
+  var heroLogo = document.querySelector('.player-logo');
+  if (heroLogo) {
+    var heroLogoImg = heroLogo.querySelector('img');
+    var sinLogo = function () { heroLogo.classList.add('player-logo--txt'); };
+    if (heroLogoImg) {
+      heroLogoImg.addEventListener('error', sinLogo);
+      if (heroLogoImg.complete && !heroLogoImg.naturalWidth) sinLogo();
+    }
   }
 
   /* ---------- 2. PORTADAS HTML: click → arranca el vídeo ---------- */
