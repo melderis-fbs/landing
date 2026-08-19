@@ -256,7 +256,9 @@
     border:1px solid rgba(196,180,154,.22);
     border-radius:10px;
     pointer-events:none;
-    z-index:1;
+    /* Por encima del overlay (z-index 5) para que el filete se siga viendo
+       cuando el fotograma ocupa todo el recuadro. */
+    z-index:6;
   }
   .player-media video,.player-media iframe{
     width:100%;height:100%;
@@ -301,6 +303,14 @@
   .player-logo--txt img{display:none}
   .player-logo--txt .player-logo-txt{display:block}
   .player-overlay.hidden{opacity:0;pointer-events:none}
+  /* El fotograma va posicionado, así que pintaría por encima de los hijos
+     estáticos del overlay. Los subimos por encima de él. */
+  .player-overlay > .player-logo,
+  .player-overlay > .play-btn,
+  .player-overlay > .overlay-text{
+    position:relative;
+    z-index:2;
+  }
   .play-btn{
     width:86px;height:86px;
     border-radius:50%;
@@ -449,6 +459,34 @@
     transition:opacity .3s ease;
   }
   .cover.hidden{opacity:0;pointer-events:none}
+
+  /* Fotograma del propio vídeo detrás de la portada. Se activa solo si Loom
+     devuelve una imagen; si no, queda la portada dibujada en CSS. */
+  .cover-frame{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:0;
+    display:none;
+  }
+  .has-frame .cover-frame{display:block}
+  /* Con fotograma, el fondo pasa a ser un velo: oscuro donde va el texto y
+     casi transparente del otro lado, para que se vea la imagen. */
+  .qa-media.has-frame .cover{
+    background:linear-gradient(100deg,
+      rgba(17,17,17,.94) 0%,
+      rgba(17,17,17,.80) 42%,
+      rgba(17,17,17,.30) 78%,
+      rgba(17,17,17,.15) 100%);
+  }
+  .player-media.has-frame .player-overlay{
+    background:radial-gradient(circle at 50% 48%,
+      rgba(17,17,17,.55) 0%, rgba(17,17,17,.78) 100%);
+  }
+  /* El fotograma ya es la imagen: el logo encima sobra */
+  .player-media.has-frame .player-logo{display:none}
   /* Foto opcional del lado derecho */
   .cover-photo{
     position:absolute;
@@ -1742,7 +1780,49 @@
     }
   }
 
-  /* ---------- 2. PORTADAS HTML: click → arranca el vídeo ---------- */
+  /* ---------- 2. FOTOGRAMA DE LOS VÍDEOS DE LOOM ----------
+     Loom publica un fotograma de cada vídeo en su CDN, pero el nombre del
+     archivo no está documentado y cambió con los años. Probamos los tres
+     patrones conocidos, en orden: primero el fotograma limpio, después los
+     que traen el play de Loom incrustado. Si ninguno responde, la tarjeta
+     se queda con la portada dibujada en CSS, que ya está ahí. */
+  var loomFrames = function (id) {
+    return [
+      'https://cdn.loom.com/sessions/thumbnails/' + id + '-00001.jpg',
+      'https://cdn.loom.com/sessions/thumbnails/' + id + '-with-play.jpg',
+      'https://cdn.loom.com/sessions/thumbnails/' + id + '-with-play.gif'
+    ];
+  };
+
+  document.querySelectorAll('[data-loom]').forEach(function (media) {
+    var id = media.dataset.loom;
+    if (!id) return;
+    var cover = media.querySelector('.cover, .player-overlay');
+    if (!cover) return;
+
+    var urls = loomFrames(id);
+    var i = 0;
+    var img = document.createElement('img');
+    img.className = 'cover-frame';
+    img.alt = '';
+    img.decoding = 'async';
+
+    var probar = function () {
+      i++;
+      if (i < urls.length) img.src = urls[i];
+    };
+    img.addEventListener('load', function () {
+      // Un CDN puede responder 200 con una imagen mínima de relleno
+      if (img.naturalWidth < 80) { probar(); return; }
+      media.classList.add('has-frame');
+    });
+    img.addEventListener('error', probar);
+
+    cover.insertBefore(img, cover.firstChild);
+    img.src = urls[0];
+  });
+
+  /* ---------- 3. PORTADAS HTML: click → arranca el vídeo ---------- */
   document.querySelectorAll('.cover').forEach(function (cover) {
     var media = cover.parentElement;
     if (!media) return;
@@ -1842,7 +1922,7 @@
     load();
   });
 
-  /* ---------- 3. BADGES "ACTIVÁ EL SONIDO" ---------- */
+  /* ---------- 4. BADGES "ACTIVÁ EL SONIDO" ---------- */
   document.querySelectorAll('.sound-badge').forEach(function (badge) {
     var scope = badge.parentElement;
     var video = scope ? scope.querySelector('video') : null;
@@ -1867,7 +1947,7 @@
     });
   });
 
-  /* ---------- 4. MOSAICO: tolerancia de extensión ----------
+  /* ---------- 5. MOSAICO: tolerancia de extensión ----------
      Las capturas salen de sitios distintos y vienen mezcladas en .jpg,
      .png y .jpeg. En vez de exigir que se renombren todas, probamos las
      tres. Así la carpeta se sube tal como está. */
@@ -1882,7 +1962,7 @@
     });
   });
 
-  /* ---------- 5. MOSAICO: reparto equilibrado ----------
+  /* ---------- 6. MOSAICO: reparto equilibrado ----------
      El multicolumn del navegador reparte a ojo y suele dejar una columna
      mucho más corta que el resto. Acá repartimos nosotros: cada captura va
      a la columna que en ese momento va más corta.
@@ -1951,7 +2031,7 @@
     });
   }
 
-  /* ---------- 6. VISOR DE CAPTURAS ---------- */
+  /* ---------- 7. VISOR DE CAPTURAS ---------- */
   var box = document.getElementById('lightbox');
   var shots = document.getElementById('shots');
 
@@ -1980,7 +2060,7 @@
     });
   }
 
-  /* ---------- 7. UN SOLO VÍDEO SONANDO A LA VEZ ---------- */
+  /* ---------- 8. UN SOLO VÍDEO SONANDO A LA VEZ ---------- */
   var allVideos = Array.prototype.slice.call(document.querySelectorAll('video'));
   allVideos.forEach(function (v) {
     v.addEventListener('play', function () {

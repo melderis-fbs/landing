@@ -84,10 +84,26 @@ El orden de la columna "Nº en la página" es el que aparece en `index.html`.
 Grabado y colgado. El hero es una fachada: el reproductor de Loom se carga al hacer click
 sobre la portada.
 
-La portada está dibujada en CSS (degradado oscuro con brillo beige, filete interior, logo,
-botón de play y la línea "hacé click para ver el vídeo"). No es una imagen, así que no hay
-nada que subir ni que rehacer si cambia el logo. Antes se veía un rectángulo negro mientras
-Loom no había cargado.
+## Portadas de los vídeos de Loom
+
+Los 7 vídeos pre-llamada y el de bienvenida muestran **un fotograma del propio vídeo** antes
+de reproducirse. Se toma del CDN de Loom.
+
+El nombre del archivo no está documentado y cambió con los años, así que el script prueba
+tres patrones en orden:
+
+```
+https://cdn.loom.com/sessions/thumbnails/{ID}-00001.jpg      ← fotograma limpio
+https://cdn.loom.com/sessions/thumbnails/{ID}-with-play.jpg  ← con el play de Loom
+https://cdn.loom.com/sessions/thumbnails/{ID}-with-play.gif
+```
+
+Si ninguno responde, queda la portada dibujada en CSS: degradado oscuro con brillo beige,
+filete interior, y el número, el título y el botón de play (en el hero, el logo). O sea que
+la página nunca muestra un recuadro negro, aunque Loom cambie las URLs.
+
+Con fotograma, el fondo pasa a ser un velo: oscuro del lado del texto y casi transparente
+del otro, para que la imagen se vea sin que el texto deje de leerse.
 
 - **Loom:** `2e26b0b914944987aa2770d0cf3af3f2` — ya aplicado en `index.html`
 
