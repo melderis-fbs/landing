@@ -1014,7 +1014,7 @@
          al hacer click sobre la portada, así la página abre rápido.
          ───────────────────────────────────────────────────────────────── -->
     <div class="player">
-      <div class="player-media" data-loom="2e26b0b914944987aa2770d0cf3af3f2">
+      <div class="player-media" data-loom="2e26b0b914944987aa2770d0cf3af3f2" data-cover="hero">
         <div class="player-overlay" id="heroOverlay">
           <div class="player-logo">
             <img src="https://assets.cdn.filesafe.space/x7nYndpXUc1dmpunATsZ/media/6a17c189ff82912d6577718d.png"
@@ -1095,7 +1095,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media" data-loom="2343363fe0f84add8d66d9ea8bdb2de1">
+        <div class="qa-media" data-loom="2343363fe0f84add8d66d9ea8bdb2de1" data-cover="01">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1123,7 +1123,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media" data-loom="ce887e26bf134940b9009b4db30981ee">
+        <div class="qa-media" data-loom="ce887e26bf134940b9009b4db30981ee" data-cover="02">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1151,7 +1151,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media" data-loom="f295615ad1ad4a5893cbc9787a39f691">
+        <div class="qa-media" data-loom="f295615ad1ad4a5893cbc9787a39f691" data-cover="03">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1179,7 +1179,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media" data-loom="7129cf1c49e44b99ad81531705a1dbc2">
+        <div class="qa-media" data-loom="7129cf1c49e44b99ad81531705a1dbc2" data-cover="04">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1207,7 +1207,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media" data-loom="3b3fb2c0aa03491f8c489a6239cbeaee">
+        <div class="qa-media" data-loom="3b3fb2c0aa03491f8c489a6239cbeaee" data-cover="05">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1235,7 +1235,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media" data-loom="d7b8d7db244a4c128f8d17d8333fa455">
+        <div class="qa-media" data-loom="d7b8d7db244a4c128f8d17d8333fa455" data-cover="06">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1263,7 +1263,7 @@
            Loom:  <div class="qa-media" data-loom="ID"> y borrá el <video>.
            ───────────────────────────────────────────────────────────── -->
       <article class="qa-card">
-        <div class="qa-media" data-loom="a772db6d39cb4a44a7b4ff93f3a98e7b">
+        <div class="qa-media" data-loom="a772db6d39cb4a44a7b4ff93f3a98e7b" data-cover="07">
           <div class="cover">
             <div class="cover-body">
               <div class="cover-top">
@@ -1781,45 +1781,69 @@
   }
 
   /* ---------- 2. FOTOGRAMA DE LOS VÍDEOS DE LOOM ----------
-     Loom publica un fotograma de cada vídeo en su CDN, pero el nombre del
-     archivo no está documentado y cambió con los años. Probamos los tres
-     patrones conocidos, en orden: primero el fotograma limpio, después los
-     que traen el play de Loom incrustado. Si ninguno responde, la tarjeta
-     se queda con la portada dibujada en CSS, que ya está ahí. */
-  var loomFrames = function (id) {
-    return [
-      'https://cdn.loom.com/sessions/thumbnails/' + id + '-00001.jpg',
-      'https://cdn.loom.com/sessions/thumbnails/' + id + '-with-play.jpg',
-      'https://cdn.loom.com/sessions/thumbnails/' + id + '-with-play.gif'
-    ];
-  };
+     Se prueba en este orden, y gana el primero que devuelva una imagen:
+
+       1. assets/video-covers/ de este repo, servido por jsDelivr. Es la vía
+          fiable, porque el archivo lo controlamos nosotros. Se busca por el
+          data-cover de cada bloque (01 a 07, y hero).
+       2. El CDN de Loom. El nombre del archivo no está documentado y cambió
+          con los años, así que van tres patrones conocidos.
+       3. El oEmbed de Loom, que devuelve la URL buena en un JSON. Depende de
+          que Loom permita la consulta desde otro dominio (CORS); si no la
+          permite, el navegador la rechaza y seguimos de largo.
+
+     Si nada responde, queda la portada dibujada en CSS. La página nunca
+     muestra un recuadro negro. */
+  var COVERS = 'https://cdn.jsdelivr.net/gh/melderis-fbs/landing/assets/video-covers/';
 
   document.querySelectorAll('[data-loom]').forEach(function (media) {
-    var id = media.dataset.loom;
-    if (!id) return;
+    var id    = media.dataset.loom;
+    var slug  = media.dataset.cover;
     var cover = media.querySelector('.cover, .player-overlay');
-    if (!cover) return;
+    if (!id || !cover) return;
 
-    var urls = loomFrames(id);
-    var i = 0;
+    var urls = [];
+    if (slug) {
+      ['.jpg', '.png', '.jpeg', '.PNG', '.JPG'].forEach(function (e) {
+        urls.push(COVERS + slug + e);
+      });
+    }
+    urls.push('https://cdn.loom.com/sessions/thumbnails/' + id + '-00001.jpg');
+    urls.push('https://cdn.loom.com/sessions/thumbnails/' + id + '-with-play.jpg');
+    urls.push('https://cdn.loom.com/sessions/thumbnails/' + id + '-with-play.gif');
+
     var img = document.createElement('img');
     img.className = 'cover-frame';
     img.alt = '';
     img.decoding = 'async';
 
-    var probar = function () {
-      i++;
-      if (i < urls.length) img.src = urls[i];
+    var i = -1;
+    var oembedYaProbado = false;
+
+    var oembed = function () {
+      if (oembedYaProbado || !window.fetch) return;
+      oembedYaProbado = true;
+      fetch('https://www.loom.com/v1/oembed?url=https://www.loom.com/share/' + id)
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) { if (d && d.thumbnail_url) img.src = d.thumbnail_url; })
+        .catch(function () { /* sin permiso de origen: queda la portada de CSS */ });
     };
+
+    var siguiente = function () {
+      i++;
+      if (i < urls.length) { img.src = urls[i]; return; }
+      oembed();
+    };
+
     img.addEventListener('load', function () {
       // Un CDN puede responder 200 con una imagen mínima de relleno
-      if (img.naturalWidth < 80) { probar(); return; }
+      if (img.naturalWidth < 80) { siguiente(); return; }
       media.classList.add('has-frame');
     });
-    img.addEventListener('error', probar);
+    img.addEventListener('error', siguiente);
 
     cover.insertBefore(img, cover.firstChild);
-    img.src = urls[0];
+    siguiente();
   });
 
   /* ---------- 3. PORTADAS HTML: click → arranca el vídeo ---------- */
