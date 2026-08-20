@@ -1825,13 +1825,32 @@
       oembedYaProbado = true;
       fetch('https://www.loom.com/v1/oembed?url=https://www.loom.com/share/' + id)
         .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) { if (d && d.thumbnail_url) img.src = d.thumbnail_url; })
-        .catch(function () { /* sin permiso de origen: queda la portada de CSS */ });
+        .then(function (d) {
+          if (d && d.thumbnail_url) {
+            if (window.console && console.info) {
+              console.info('[portada] oEmbed devolvió: ' + d.thumbnail_url);
+            }
+            img.src = d.thumbnail_url;
+          }
+        })
+        .catch(function () {
+          if (window.console && console.info) {
+            console.info('[portada] oEmbed no accesible desde el navegador (CORS).');
+          }
+        });
     };
 
+    var fallaron = [];
     var siguiente = function () {
+      if (i >= 0 && i < urls.length) fallaron.push(urls[i]);
       i++;
       if (i < urls.length) { img.src = urls[i]; return; }
+      // Nada respondió: lo decimos por consola para poder diagnosticarlo
+      // en vez de quedarnos suponiendo por qué no aparece la portada.
+      if (window.console && console.info) {
+        console.info('[portada] sin fotograma para ' + (slug || id) +
+                     '. Probé: ' + fallaron.join(' , '));
+      }
       oembed();
     };
 
